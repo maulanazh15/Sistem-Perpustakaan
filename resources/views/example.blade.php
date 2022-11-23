@@ -10,14 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700;800;900&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="css/style.css">
   <title>Coba Tailwind</title>
 </head>
 
 <body class="font-inter">
 
   <div class="container px-6 font-inter max-w-md mx-auto p-2 rounded-md sm:max-w-xl md:max-w-full lg:flex-1">
-    <h3 class="text-4xl sm:text-5xl font-bold text-red-100">
+    <h3 class="text-4xl sm:text-5xl font-bold text-red-800">
       Ace Lancester
     </h3>
     <img src="https://source.unsplash.com/600x400?" alt="laptop"
