@@ -15,11 +15,11 @@
 </head>
 
 <body class="font-inter">
-  {{-- <div class="container px-6 font-inter max-w-md mx-auto p-2 rounded-md sm:max-w-xl md:max-w-full lg:flex-1">
-    <h3 class="text-4xl sm:text-5xl font-bold text-red-900">
+  <div class="container px-6 font-inter max-w-md mx-auto p-2 rounded-md sm:max-w-xl md:max-w-full lg:flex-1">
+    <h3 class="text-4xl sm:text-5xl font-bold text-gray-600">
       Ace Lancester
     </h3>
-    <img src="img/2.jpg" alt="laptop"
+    <img src="https://source.unsplash.com/600x400?" alt="laptop"
       class="mt-4 rounded-xl shadow-lg mb-4 sm:mt-8 sm:h-64 sm:w-full md:max-w-full sm:object-cover sm:object-center lg:hidden">
     <h2 class="text-2xl font-semibold mb-3 text-slate-700 sm:mt-3 sm:text-3xl">Belajar Tailwind</h2>
     <p class="text-slate-600 sm:mt-3 sm:text-2xl ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex odio
@@ -27,15 +27,15 @@
       ut error, sit modi, repudiandae rem eum excepturi officiis aut, aspernatur fuga nisi. </p>
     <div class="mt-4 sm:mt-6">
       <a href="#"
-        class="inline-block px-5 py-3 bg-red-700 text-white rounded-lg shadow-lg uppercase font-semibold tracking-wider text-sm sm:text-base">Subscribe
+        class="inline-block px-5 py-3 bg-red-400 text-white rounded-lg shadow-lg uppercase font-semibold tracking-wider text-sm sm:text-base">Subscribe
         Channel Youtube</a>
     </div>
   </div>
   <div class="lg:flex hidden lg:w-1/2 bg-red-300 ">
-    <img src="./images/banner/book.jpeg" class="lg:object-cover rounded-tl-2xl rounded-bl-2xl">
-  </div> --}}
+    <img src="https://source.unsplash.com/600x400?" class="lg:object-cover rounded-tl-2xl rounded-bl-2xl">
+  </div>
 
-  <hr class="my-10"> 
+  <hr class="my-10">
 
   <h2 class="mt-24 mb-5 text-center font-bold text-3xl text-blue-900 mx-auto">My Gallery</h2>
   <div></div>
