@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "dev-tailwind": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch"
+        "build-tailwind": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch"
     },
     "devDependencies": {
         "axios": "^0.27",
