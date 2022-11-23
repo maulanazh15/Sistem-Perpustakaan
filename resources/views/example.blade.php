@@ -15,8 +15,9 @@
 </head>
 
 <body class="font-inter">
+
   <div class="container px-6 font-inter max-w-md mx-auto p-2 rounded-md sm:max-w-xl md:max-w-full lg:flex-1">
-    <h3 class="text-4xl sm:text-5xl font-bold text-gray-600">
+    <h3 class="text-4xl sm:text-5xl font-bold text-red-900">
       Ace Lancester
     </h3>
     <img src="https://source.unsplash.com/600x400?" alt="laptop"
