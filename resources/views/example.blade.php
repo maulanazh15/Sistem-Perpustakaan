@@ -9,13 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700;800;900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <title>Coba Tailwind</title>
 </head>
 
 <body class="font-inter">
-  <!-- <div class="container px-6 font-inter max-w-md mx-auto p-2 rounded-md sm:max-w-xl md:max-w-full lg:flex-1">
-    <h3 class="text-4xl sm:text-5xl font-bold text-gray-600">
+  {{-- <div class="container px-6 font-inter max-w-md mx-auto p-2 rounded-md sm:max-w-xl md:max-w-full lg:flex-1">
+    <h3 class="text-4xl sm:text-5xl font-bold text-red-900">
       Ace Lancester
     </h3>
     <img src="img/2.jpg" alt="laptop"
@@ -26,17 +27,17 @@
       ut error, sit modi, repudiandae rem eum excepturi officiis aut, aspernatur fuga nisi. </p>
     <div class="mt-4 sm:mt-6">
       <a href="#"
-        class="inline-block px-5 py-3 bg-red-600 text-white rounded-lg shadow-lg uppercase font-semibold tracking-wider text-sm sm:text-base">Subscribe
+        class="inline-block px-5 py-3 bg-red-700 text-white rounded-lg shadow-lg uppercase font-semibold tracking-wider text-sm sm:text-base">Subscribe
         Channel Youtube</a>
     </div>
   </div>
   <div class="lg:flex hidden lg:w-1/2 bg-red-300 ">
-    <img src="img/1.jpg" class="lg:object-cover rounded-tl-2xl rounded-bl-2xl">
-  </div>
+    <img src="./images/banner/book.jpeg" class="lg:object-cover rounded-tl-2xl rounded-bl-2xl">
+  </div> --}}
 
-  <hr class="my-10"> -->
+  <hr class="my-10"> 
 
-  <h2 class="mt-24 mb-5 text-center font-bold text-3xl text-slate-700 mx-auto">My Gallery</h2>
+  <h2 class="mt-24 mb-5 text-center font-bold text-3xl text-blue-900 mx-auto">My Gallery</h2>
   <div></div>
   <div class="container mx-auto px-6 sm:flex sm:flex-wrap sm:gap-4 sm:justify-evenly bg-white">
     <div class="rounded-md shadow-lg overflow-hidden mb-10 sm:w-64 md:w-80 lg:w-72">
