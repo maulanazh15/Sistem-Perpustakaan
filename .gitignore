@@ -1,11 +1,10 @@
-/public/css/style.css
-/node_modules
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
-
+/node_modules
+/public
 .env.backup
 .phpunit.result.cache
 Homestead.json
