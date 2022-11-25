@@ -16,8 +16,8 @@
       type="image/x-icon"
     />
     
-    <link rel="stylesheet" href="/css/animate.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- ==== WOW JS ==== -->
     <script src="js/wow.min.js"></script>
