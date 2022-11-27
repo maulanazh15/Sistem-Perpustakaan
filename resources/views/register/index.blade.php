@@ -21,11 +21,21 @@
                   <img src="images/logo/logo.svg" alt="logo" />
                 </a>
               </div>
-              <form>
+              <form action="/register" method="POST">
+                @csrf
                 <div class="mb-6">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder="Nama"
+                    name="name"
+                    class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
+                  />
+                </div>
+                <div class="mb-6">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    name="username"
                     class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
                   />
                 </div>
@@ -33,6 +43,7 @@
                   <input
                     type="email"
                     placeholder="Email"
+                    name="email"
                     class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
                   />
                 </div>
@@ -40,6 +51,7 @@
                   <input
                     type="password"
                     placeholder="Password"
+                    name="password"
                     class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
                   />
                 </div>

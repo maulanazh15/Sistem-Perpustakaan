@@ -7,7 +7,7 @@
           <div class="flex items-center justify-between">
             <div class="widget-label">
               <h3>
-                Clients
+                Jumlah Peminjam
               </h3>
               <h1>
                 512
@@ -22,10 +22,10 @@
           <div class="flex items-center justify-between">
             <div class="widget-label">
               <h3>
-                Sales
+                Jumlah Denda
               </h3>
               <h1>
-                $7,770
+                Rp777000
               </h1>
             </div>
             <span class="icon widget-icon text-blue-500"><i class="mdi mdi-cart-outline mdi-48px"></i></span>
@@ -38,10 +38,10 @@
           <div class="flex items-center justify-between">
             <div class="widget-label">
               <h3>
-                Performance
+                Jumlah Peminjaman Buku
               </h3>
               <h1>
-                256%
+                256
               </h1>
             </div>
             <span class="icon widget-icon text-red-500"><i class="mdi mdi-finance mdi-48px"></i></span>
@@ -54,7 +54,7 @@
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-finance"></i></span>
-          Performance
+          Jumlah Peminjam dan Peminjaman Buku Dalam Waktu Sebulan
         </p>
         <a href="#" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
@@ -91,7 +91,7 @@
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
-          Clients
+          Peminjam
         </p>
         <a href="#" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
@@ -102,11 +102,11 @@
           <thead>
           <tr>
             <th></th>
-            <th>Name</th>
-            <th>Company</th>
-            <th>City</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>Kota</th>
             <th>Progress</th>
-            <th>Created</th>
+            <th>Tanggal dibuat</th>
             <th></th>
           </tr>
           </thead>

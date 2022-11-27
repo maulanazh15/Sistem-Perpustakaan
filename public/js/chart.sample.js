@@ -34,7 +34,7 @@ new Chart(ctx, {
       pointHoverRadius: 4,
       pointHoverBorderWidth: 15,
       pointRadius: 4,
-      data: randomChartData(9)
+      data: randomChartData(30)
     }, {
       fill: false,
       borderColor: chartColors["default"].info,
@@ -48,7 +48,7 @@ new Chart(ctx, {
       pointHoverRadius: 4,
       pointHoverBorderWidth: 15,
       pointRadius: 4,
-      data: randomChartData(9)
+      data: randomChartData(30)
     }, {
       fill: false,
       borderColor: chartColors["default"].danger,
@@ -62,9 +62,11 @@ new Chart(ctx, {
       pointHoverRadius: 4,
       pointHoverBorderWidth: 15,
       pointRadius: 4,
-      data: randomChartData(9)
+      data: randomChartData(30)
     }],
-    labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09']
+    labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09','10',
+    '10', '11', '12', '04', '05', '06', '07', '08', '09','10',
+    '01', '02', '03', '04', '05', '06', '07', '08', '09','10',]
   },
   options: {
     maintainAspectRatio: false,

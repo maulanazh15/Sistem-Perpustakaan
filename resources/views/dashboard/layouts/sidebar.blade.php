@@ -1,7 +1,7 @@
 <aside class="aside is-placed-left is-expanded">
     <div class="aside-tools">
       <div>
-        Admin <b class="font-black">One</b>
+        SI<b class="font-black">PERPUS</b>
       </div>
     </div>
     <div class="menu is-menu-main">
@@ -14,7 +14,7 @@
           </a>
         </li>
       </ul>
-      <p class="menu-label">Examples</p>
+      <p class="menu-label">Admin</p>
       <ul class="menu-list">
         <li class="{{ Request::is('dashboard/tables') ? 'active' : '' }}">
           <a href="/dashboard/tables">
