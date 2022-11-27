@@ -2,7 +2,9 @@
 const withMT = require("@material-tailwind/html/utils/withMT");
 
 module.exports = withMT({
-  content: ["./resources/**/*.blade.php"],
+  content: ["./resources/**/*.blade.php",
+            "./resources/**/*.css",
+            "./resources/**/*.js"],
   theme: {
     screens: {
       sm: "540px",
@@ -40,6 +42,12 @@ module.exports = withMT({
         "switch-1": "0px 0px 5px rgba(0, 0, 0, 0.15)",
         testimonial: "0px 60px 120px -20px #EBEFFD",
       },
+      zIndex: {
+        '-1': '-1',
+      },
+      flexGrow: {
+        '5' : '5'
+      }
     },
   },
   variants: {

@@ -20,9 +20,7 @@ Route::get('/example', function(){
 Route::get('/welcome',function(){
     return view('welcome');
 });
-Route::get('/dashboard',function(){
-    return view('dashboard.index');
-});
+
 
 Route::get('/', function () {
     return view('index', [
@@ -78,3 +76,33 @@ Route::get('/not-found', function () {
         'title' => 'Not Found'
     ]);
 });
+
+// Dashboard view
+
+Route::get('/dashboard',function(){
+    return view('dashboard.index' , [
+        'judul' => 'Dashboard'
+    ]);
+});
+Route::get('/dashboard/forms',function(){
+    return view('dashboard.forms', [
+        'judul' => 'Form'
+    ]);
+});
+Route::get('/dashboard/profile',function(){
+    return view('dashboard.profile', [
+        'judul' => 'Profil'
+    ]);
+});
+Route::get('/dashboard/tables',function(){
+    return view('dashboard.tables', [
+        'judul' => 'Tabel'
+    ]);
+});
+Route::get('/dashboard/login',function(){
+    return view('dashboard.login', [
+        'judul' => 'Login'
+    ]);
+});
+
+
