@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PustakawanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -53,9 +55,10 @@ Route::get('/register', function () {
     ]);
 });
 
-
+// Register dan Login
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [UserController::class, 'authenticate']);
+Route::post('/logout', [UserController::class, 'logout']);
 
 Route::get('/pricing', function () {
     return view('pricing',[
@@ -65,6 +68,11 @@ Route::get('/pricing', function () {
 Route::get('/contact', function () {
     return view('contact',[
         'title' => 'Contact'
+    ]);
+});
+Route::get('/katalogbuku', function () {
+    return view('blog-grids',[
+        'title' => 'My Blog'
     ]);
 });
 Route::get('/blog-grids', function () {
@@ -110,5 +118,13 @@ Route::get('/dashboard/login',function(){
         'judul' => 'Login'
     ]);
 });
+
+// Buku View
+
+Route::resource('/dashboard/buku', BukuController::class);
+
+// Kepala Perpustakaan view
+
+Route::resource('/dashboard/pustakawan', PustakawanController::class);
 
 

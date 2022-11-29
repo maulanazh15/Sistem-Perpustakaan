@@ -1,11 +1,11 @@
-.button {
+/* .button {
   @apply inline-flex bg-white text-black border-gray-50 border cursor-pointer justify-center px-4 py-2 text-center
     whitespace-nowrap rounded
     hover:border-gray-500
     focus:outline-none;
-}
+} */
 
-.button.addon-right {
+/* .button.addon-right {
   @apply rounded-r-none;
 }
 
@@ -55,4 +55,4 @@
 
 .buttons .button {
   @apply mx-1;
-}
+} */

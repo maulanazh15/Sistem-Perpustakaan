@@ -12,15 +12,27 @@
     </title>
     <link
       rel="shortcut icon"
-      href="images/favicon.png"
+      href="/images/logo/favicon.svg"
       type="image/x-icon"
     />
-    
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Material Icons Link -->
+<link
+href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet"
+/>
+
+<!-- Font Awesome Link -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+crossorigin="anonymous"
+/>
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- ==== WOW JS ==== -->
-    <script src="js/wow.min.js"></script>
+    <script src="/js/wow.min.js"></script>
     <script>
       new WOW().init();
     </script>
@@ -47,7 +59,7 @@
 
     <!-- ====== All Scripts -->
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script>
       // ==== for menu scroll
       // const pageLink = document.querySelectorAll(".ud-menu-scroll");

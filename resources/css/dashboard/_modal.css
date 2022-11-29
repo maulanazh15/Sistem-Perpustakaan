@@ -1,4 +1,4 @@
-.modal {
+/* .modal {
   @apply hidden items-center flex-col justify-center overflow-hidden fixed inset-0 z-40;
 }
 
@@ -34,4 +34,4 @@
 
 .modal-card-foot .button:not(:last-child) {
   @apply mr-2;
-}
+} */

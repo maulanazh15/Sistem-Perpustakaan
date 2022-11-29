@@ -1,7 +1,10 @@
 <aside class="aside is-placed-left is-expanded">
     <div class="aside-tools">
-      <div>
-        SI<b class="font-black">PERPUS</b>
+      <div class="pl-3">
+        <a href="/" class="text-white">
+          {{-- SI<b class="font-black">PERPUS</b> --}}
+        <img src="/images/logo/siperpus-logo-white.svg" alt="siperpus" sizes="30" width="100" height="50">
+        </a>
       </div>
     </div>
     <div class="menu is-menu-main">
@@ -16,6 +19,43 @@
       </ul>
       <p class="menu-label">Admin</p>
       <ul class="menu-list">
+        <li class="{{ Request::is('dashboard/buku') ? 'active' : '' }}">
+          <a class="dropdown">
+            <span class="icon"><i class="mdi mdi-book"></i></span>
+            <span class="menu-item-label">Buku</span>
+            <span class="icon"><i class="mdi mdi-plus"></i></span>
+          </a>
+          <ul>
+            <li>
+              <a href="/dashboard/buku">
+                <span>Data Buku</span>
+              </a>
+            </li>
+            <li>
+              <a href="#void">
+                <span>Laporan Data Buku</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="{{ Request::is('dashboard/pustakawan') ? 'active' : '' }}">
+          <a class="dropdown">
+            <span class="icon"><i class="mdi mdi-account-supervisor"></i></span>
+            <span class="menu-item-label">Pustakawan</span>
+          </a>
+          <ul>
+            <li>
+              <a href="/dashboard/pustakawan">
+                <span>Data Pustakawan</span>
+              </a>
+            </li>
+            <li>
+              <a href="#void">
+                <span>Laporan Data Pustakawan</span>
+              </a>
+            </li>
+          </ul>
+        </li>
         <li class="{{ Request::is('dashboard/tables') ? 'active' : '' }}">
           <a href="/dashboard/tables">
             <span class="icon"><i class="mdi mdi-table"></i></span>

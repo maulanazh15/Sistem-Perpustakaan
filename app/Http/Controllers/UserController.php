@@ -22,11 +22,10 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            // echo "berhasil login";
             return redirect()->intended('/dashboard');
         }
 
-        // return back()->with('loginError','Login failed!');
+        return back()->with('loginError','Login failed!');
     }
 
     public function logout(Request $request){
@@ -35,6 +34,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

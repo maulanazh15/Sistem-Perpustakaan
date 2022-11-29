@@ -4,7 +4,7 @@
         <div class="relative -mx-4 flex items-center justify-between">
             <div class="w-60 max-w-full px-4">
                 <a href="/" class="navbar-logo block w-full py-5">
-                    <img src="images/logo/logo-white.svg" alt="logo" class="header-logo w-full" />
+                    <img src="images/logo/siperpus-logo-white.svg" alt="logo" class="header-logo w-full">
                 </a>
             </div>
             <div class="flex w-full items-center justify-between px-4">
@@ -17,7 +17,7 @@
                     </button>
                     <nav id="navbarCollapse"
                         class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
-                        <ul class="navi navb lg:flex">
+                        <ul class="lg:flex">
                             <li class="group relative">
                                 <a href="/"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70">
@@ -25,12 +25,13 @@
                                 </a>
                             </li>
                             <li class="group relative">
-                                <a href="about"
+                                <a href="/about"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                                    About
+                                    Tentang
                                 </a>
                             </li>
-                            <li class="group relative">
+
+                            {{-- <li class="group relative">
                                 <a href="/pricing"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
                                     Pricing
@@ -47,9 +48,9 @@
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold xl:ml-12 group-hover:text-primary lg:group-hover:text-white lg:group-hover:opacity-70">
                                     Contact
                                 </a>
-                            </li>
+                            </li> --}}
 
-                            <li class="submenu-item group relative">
+                            {{-- <li class="submenu-item group relative">
                                 <a href="javascript:void(0)"
                                     class="relative mx-8 flex py-2 text-base text-dark after:absolute after:right-1 after:top-1/2 after:mt-[-2px] after:h-2 after:w-2 after:-translate-y-1/2 after:rotate-45 after:border-b-2 after:border-r-2 after:border-current group-hover:text-primary lg:mr-0 lg:ml-8 lg:inline-flex lg:py-6 lg:pl-0 lg:pr-4 lg:text-white lg:after:right-0 lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
                                     Pages
@@ -89,7 +90,7 @@
                                         404 Page
                                     </a>
                                 </div>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>

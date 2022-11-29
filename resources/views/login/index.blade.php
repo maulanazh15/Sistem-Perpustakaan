@@ -15,7 +15,7 @@
                       href="javascript:void(0)"
                       class="mx-auto inline-block max-w-[160px]"
                     >
-                      <img src="images/logo/logo.svg" alt="logo" />
+                      <img src="images/logo/siperpus-logo.svg" alt="logo" />
                     </a>
                   </div>
                   <form action="/login" method="post">
@@ -44,8 +44,8 @@
                       />
                     </div>
                   </form>
-                  <p class="mb-6 text-base text-[#adadad]">Connect With</p>
-                  <ul class="-mx-2 mb-12 flex justify-between">
+                  {{-- <p class="mb-6 text-base text-[#adadad]">Connect With</p> --}}
+                  {{-- <ul class="-mx-2 mb-12 flex justify-between">
                     <li class="w-full px-2">
                       <a
                         href="javascript:void(0)"
@@ -103,17 +103,17 @@
                         </svg>
                       </a>
                     </li>
-                  </ul>
+                  </ul> --}}
                   <a
                     href="javascript:void(0)"
                     class="mb-2 inline-block text-base text-[#adadad] hover:text-primary"
                   >
-                    Forget Password?
+                    Lupa Password?
                   </a>
                   <p class="text-base text-[#adadad]">
-                    Not a member yet?
-                    <a href="signup.html" class="text-primary hover:underline">
-                      Sign Up
+                    Belum mempunyai akun siperpus?
+                    <a href="/register" class="text-primary hover:underline">
+                      Register
                     </a>
                   </p>
     

@@ -24,7 +24,7 @@
                     <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
                 </a>
                 <div class="navbar-dropdown">
-                    <a href="profile.html" class="navbar-item">
+                    <a href="/profile" class="navbar-item">
                         <span class="icon"><i class="mdi mdi-account"></i></span>
                         <span>My Profile</span>
                     </a>
@@ -37,16 +37,14 @@
                         <span>Messages</span>
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        <span class="icon"><i class="mdi mdi-logout"></i></span>
-                        <span>Log Out</span>
-                    </a>
                 </div>
             </div>
-            <a title="Log out" class="navbar-item desktop-icon-only">
-                <span class="icon"><i class="mdi mdi-logout"></i></span>
-                <span>Log out</span>
-            </a>
+            <form action="/logout" method="post" class="navbar-item desktop-icon-only">
+                    @csrf
+                    <span class="icon"><i class="mdi mdi-logout"></i></span>
+                    <input type="submit" name="logout" value="Logout">   
+            </form>
+            
         </div>
     </div>
 </nav>

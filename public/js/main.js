@@ -6,20 +6,20 @@
     const ud_header = document.querySelector(".ud-header");
     const sticky = ud_header.offsetTop;
     const logo = document.querySelector(".header-logo");
-    const navi = document.querySelector(".navi");
+    
     if (window.pageYOffset > sticky) {
       ud_header.classList.add("sticky");
-      navi.classList.remove("navb");
+   
     } else {
       ud_header.classList.remove("sticky");
-      navi.classList.add("navb");
+  
     }
 
     // === logo change
     if (ud_header.classList.contains("sticky")) {
-      logo.src = "images/logo/logo.svg";
+      logo.src = "images/logo/siperpus-logo.svg";
     } else {
-      logo.src = "images/logo/logo-white.svg";
+      logo.src = "images/logo/siperpus-logo-white.svg";
     }
 
     // show or hide the back-top-top button

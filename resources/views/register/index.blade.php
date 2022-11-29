@@ -18,7 +18,7 @@
                   href="javascript:void(0)"
                   class="mx-auto inline-block max-w-[160px]"
                 >
-                  <img src="images/logo/logo.svg" alt="logo" />
+                  <img src="images/logo/siperpus-logo.svg" alt="logo" />
                 </a>
               </div>
               <form action="/register" method="POST">
@@ -63,8 +63,8 @@
                   />
                 </div>
               </form>
-              <p class="mb-6 text-base text-[#adadad]">Connect With</p>
-              <ul class="-mx-2 mb-12 flex justify-between">
+              {{-- <p class="mb-6 text-base text-[#adadad]">Connect With</p> --}}
+              {{-- <ul class="-mx-2 mb-12 flex justify-between">
                 <li class="w-full px-2">
                   <a
                     href="javascript:void(0)"
@@ -122,7 +122,7 @@
                     </svg>
                   </a>
                 </li>
-              </ul>
+              </ul> --}}
 
               <p class="mb-4 text-base text-[#adadad]">
                 By creating an account you are agree with our
@@ -142,9 +142,9 @@
               </p>
 
               <p class="text-base text-[#adadad]">
-                Already have an account?
+                Sudah Punya Akun Siperpus?
                 <a href="signin.html" class="text-primary hover:underline">
-                  Sign In
+                  Log In
                 </a>
               </p>
 
