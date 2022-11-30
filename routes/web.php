@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PeminjamController;
 use App\Http\Controllers\PustakawanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -119,12 +120,19 @@ Route::get('/dashboard/login',function(){
     ]);
 });
 
-// Buku View
+// Model Buku View
 
 Route::resource('/dashboard/buku', BukuController::class);
 
-// Kepala Perpustakaan view
+// Model Pustakawan view
+
+Route::delete('/dashboard/pustakawan/{user:id}', [PustakawanController::class, 'destroy']);
 
 Route::resource('/dashboard/pustakawan', PustakawanController::class);
+
+// Model Peminjam View
+
+Route::delete('/dashboard/peminjam/{user:id}', [PeminjamController::class, 'destroy']);
+Route::resource('/dashboard/peminjam', PeminjamController::class);
 
 

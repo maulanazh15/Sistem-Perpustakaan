@@ -41,8 +41,10 @@
             </div>
             <form action="/logout" method="post" class="navbar-item desktop-icon-only">
                     @csrf
-                    <span class="icon"><i class="mdi mdi-logout"></i></span>
-                    <input type="submit" name="logout" value="Logout">   
+                    <button type="submit" name="logout" class="button button-pink button-gradient button-icon">
+                        <i class="material-icons">logout</i>
+                    </button>
+                    
             </form>
             
         </div>

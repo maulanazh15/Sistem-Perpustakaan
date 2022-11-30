@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
-class PustakawanController extends Controller
+class PeminjamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class PustakawanController extends Controller
      */
     public function index()
     {
-        return view('dashboard.kepala.pustakawan.index', [
-            'judul' => 'Data Pustakawan',
-            'data_pustakawan' => User::where('status','pustakawan')->get()
+        return view('dashboard.peminjam.index', [
+            'judul' => 'Data Peminjam',
+            'data_peminjam' => User::where('status','peminjam')->get()
         ]);
     }
 
@@ -29,8 +29,8 @@ class PustakawanController extends Controller
      */
     public function create()
     {
-        return view('dashboard.kepala.pustakawan.create', [
-            'judul' => 'Daftar Pustakawan'
+        return view('dashboard.peminjam.create', [
+            'judul' => 'Data Peminjam'
         ]);
     }
 
@@ -51,12 +51,12 @@ class PustakawanController extends Controller
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
         $validatedData['password'] = Hash::make($validatedData['password']);
-        $validatedData['status'] = 'pustakawan';
+        $validatedData['status'] = 'peminjam';
         $validatedData['isAktif'] = 0;
 
         User::create($validatedData);
 
-        return redirect('/dashboard/pustakawan')->with('berhasil', 'Pustakawan berhasil didaftarkan');
+        return redirect('/dashboard/peminjam')->with('berhasil', 'Peminjam berhasil didaftarkan');
     }
 
     /**
@@ -78,9 +78,7 @@ class PustakawanController extends Controller
      */
     public function edit(User $user)
     {
-        return view('dashboard.kepala.pustakawan.edit', [
-            'judul' => 'Ubah data Pustakawan'
-        ]);
+        //
     }
 
     /**
@@ -103,8 +101,10 @@ class PustakawanController extends Controller
      */
     public function destroy(User $user)
     {
-        User::where('id', $user->id)->delete();
+        User::destroy($user->id);
+        // dd($user->id);
+        return redirect('/dashboard/peminjam')->with('berhasil','Peminjam berhasil dihapus!');
 
-        return redirect('/dashboard/pustakawan')->with('berhasil','Pustakawan berhasil dihapus!');
+
     }
 }

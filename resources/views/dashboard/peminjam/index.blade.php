@@ -9,18 +9,18 @@
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
           {{ $judul }}
         </p>
-        <a href="/dashboard/pustakawan/create" class="button button-green my-3 mr-3 flex items-center" data-ripple-light="true">
-         <i class="material-icons -ml-3">add</i> Daftar Pustakawan 
+        <a href="/dashboard/peminjam/create" class="button button-green my-3 mr-3 flex items-center" data-ripple-light="true">
+         <i class="material-icons -ml-3">add</i> Daftar Peminjam 
         </a>
       </header>
       <div class="card-content">
-        @if ($data_pustakawan->isEmpty())
+        @if ($data_peminjam->isEmpty())
         <div class="card empty">
             <div class="card-content">
               <div>
                 <span class="icon large"><i class="mdi mdi-emoticon-sad mdi-48px"></i></span>
               </div>
-              <p>Data Pustakawan Kosong</p>
+              <p>Data Peminjam Kosong</p>
             </div>
           </div>
         @else
@@ -47,7 +47,7 @@
             </tr>
             </thead>
             <tbody>
-              @foreach ($data_pustakawan as $pustakawan)
+              @foreach ($data_peminjam as $peminjam)
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 {{-- <td class="checkbox-cell">
@@ -61,18 +61,18 @@
                     <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full">
                   </div>
                 </td> --}}
-                <td data-label="Name">{{ $pustakawan->name }}</td>
-                <td data-label="Company">{{ $pustakawan->username}}</td>
-                <td data-label="City">{{ $pustakawan->email }}</td>
+                <td data-label="Name">{{ $peminjam->name }}</td>
+                <td data-label="Company">{{ $peminjam->username}}</td>
+                <td data-label="City">{{ $peminjam->email }}</td>
                 <td data-label="City">
-                  @if ($pustakawan->isAktif)
+                  @if ($peminjam->isAktif)
                   <button class="chip chip-green">Online</button></td>
                   @else
                   <button class="chip chip-red">Offline</button></td>  
                   @endif
                   
                 <td data-label="Created">
-                  <small class="text-gray-500" title="Oct 25, 2021">{{ $pustakawan->created_at->diffForHumans() }}</small>
+                  <small class="text-gray-500" title="Oct 25, 2021">{{ $peminjam->created_at->diffForHumans() }}</small>
                 </td>
                 {{-- <td data-label="Progress" class="progress-cell">
                   <progress max="100" value="79">79</progress>
@@ -82,9 +82,10 @@
                     {{-- <a href="/dashboard/buku/{{ $buku->id }}" class="button button-icon button-blue mr-2" data-ripple-light="true">
                       <i class="material-icons">visibility</i>
                     </a> --}}
-                    <a href="/dashboard/pustakawan/{{ $pustakawan->id }}/edit" class="button button-icon button-orange mr-2" data-ripple-light="true">
+                    {{-- <a href="/dashboard/peminjam/{{ $peminjam->id }}/edit" class="button button-icon button-orange mr-2" data-ripple-light="true">
                       <i class="material-icons">edit</i>
-                    </a>
+                    </a> --}}
+
                     <button class="button button-icon button-red" dialog-trigger="true" data-ripple-light="true">
                       <i class="material-icons">delete</i>
                     </button>
@@ -93,7 +94,7 @@
                       <div class="modal-dialog">
                         <div class="dialog-content">
                           <div class="dialog-header">
-                            <h6 class="mb-0">Hapus Pustakawan</h6>
+                            <h6 class="mb-0">Hapus Peminjam</h6>
                             <button
                               type="button"
                               class="me-0 button-close"
@@ -105,7 +106,7 @@
                           </div>
                           <div class="dialog-body">
                             <p class="opacity-60">
-                             Apakah Anda Yakin ingin menghapus data pustakawan ini?
+                             Apakah Anda Yakin ingin menghapus data peminjam ini?
                             </p>
                           </div>
                           <div class="dialog-footer">
@@ -115,7 +116,7 @@
                             >
                               Tidak
                             </button>
-                            <form action="{{ route('pustakawan.destroy', $pustakawan->id) }}" class="ml-1" method="post">
+                            <form action="{{ route('peminjam.destroy', $peminjam->id) }}" class="ml-1" method="post">
                               @method('delete')
                               @csrf
                               <button class="button button-gradient button-red" dialog-trigger="true" data-ripple-light="true">

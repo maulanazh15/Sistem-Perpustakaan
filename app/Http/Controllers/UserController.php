@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,8 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
+            User::where('email', $credentials['email'])->update(['isAktif'=>1]);
+            $request->session()->put('email', $credentials['email']);
             return redirect()->intended('/dashboard');
         }
 
@@ -30,7 +33,7 @@ class UserController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-
+        User::where('email', $request->session()->get('email'))->update(['isAktif'=>0]);
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

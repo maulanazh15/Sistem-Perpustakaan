@@ -5,11 +5,11 @@
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-lock"></i></span>
-          Daftar Pustakawan
+          Daftar Peminjam
         </p>
       </header>
       <div class="card-content">
-        <form action="/dashboard/pustakawan" method="post">
+        <form action="/dashboard/peminjam" method="post">
             @csrf
           <div class="field spaced">
             <label class="label">Nama Lengkap</label>
@@ -18,7 +18,7 @@
               <span class="icon is-small left"><i class="mdi mdi-account"></i></span>
             </div>
             <p class="help">
-              Isikan nama valid pustakawan
+              Isikan nama valid peminjam
             </p>
           </div>
           <div class="field spaced">
@@ -38,7 +38,7 @@
               <span class="icon is-small left"><i class="mdi mdi-account"></i></span>
             </div>
             <p class="help">
-              Isikan email valid pustakawan
+              Isikan email valid peminjam
             </p>
           </div>
 
