@@ -18,7 +18,7 @@ class BukuFactory extends Factory
     {
         return [
             'judul_buku' => fake()->sentence(3),
-            'penulis' => fake()->sentence(1),
+            'penulis' => fake()->name(),
             'kategori' => fake()->sentence(1),
             'penerbit' => fake()->sentence(1),
             'tahun_terbit' => fake()->numberBetween(1990, 2022),

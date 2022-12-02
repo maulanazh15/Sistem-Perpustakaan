@@ -18,7 +18,7 @@ class PeminjamController extends Controller
     {
         return view('dashboard.peminjam.index', [
             'judul' => 'Data Peminjam',
-            'data_peminjam' => User::where('status','peminjam')->get()
+            'data_peminjam' => User::where('status','peminjam')->paginate(10)
         ]);
     }
 

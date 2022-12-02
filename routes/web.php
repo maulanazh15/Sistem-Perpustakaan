@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PeminjamController;
 use App\Http\Controllers\PustakawanController;
 use App\Http\Controllers\RegisterController;
@@ -120,6 +121,12 @@ Route::get('/dashboard/login',function(){
     ]);
 });
 
+
+// Katalog Buku
+
+Route::get('/katalog', [BukuController::class, 'katalog']);
+Route::post('/booking', [PeminjamanController::class, 'booking']);
+
 // Model Buku View
 
 Route::resource('/dashboard/buku', BukuController::class);
@@ -132,8 +139,12 @@ Route::resource('/dashboard/pustakawan', PustakawanController::class);
 
 // Model Peminjam View
  
-
 Route::delete('/dashboard/peminjam/{user:id}', [PeminjamController::class, 'destroy']);
 Route::resource('/dashboard/peminjam', PeminjamController::class);
+
+//Model Peminjaman Buku View
+
+Route::get('/dashboard/peminjaman', [PeminjamanController::class, 'index']);
+Route::get('/dashboard/peminjaman/{peminjaman:id}/update', [PeminjamanController::class, 'update']);
 
 

@@ -80,7 +80,6 @@
                 <a class="dropdown">
                     <span class="icon"><i class="mdi mdi-book"></i></span>
                     <span class="menu-item-label">Peminjaman Buku</span>
-                    <span class="icon"><i class="mdi mdi-minus"></i></span>
                 </a>
                 <ul>
                     <li>
@@ -94,6 +93,12 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="{{ Request::is('dashboard/histori') ? 'active' : '' }}">
+                <a href="/dashboard/histori">
+                    <span class="icon"><i class="mdi mdi-history"></i></span>
+                    <span class="menu-item-label">Histori Peminjaman</span>
+                </a>
             </li>
             <li class="{{ Request::is('dashboard/tables') ? 'active' : '' }}">
                 <a href="/dashboard/tables">

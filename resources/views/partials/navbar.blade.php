@@ -19,7 +19,7 @@
                         class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
                         <ul class="lg:flex">
                             <li class="group relative">
-                                <a href="/"
+                                    <a href="/"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70">
                                     Home
                                 </a>
@@ -28,6 +28,12 @@
                                 <a href="/about"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
                                     Tentang
+                                </a>
+                            </li>
+                            <li class="group relative">
+                                <a href="/katalog"
+                                    class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                    Katalog Buku
                                 </a>
                             </li>
 
@@ -94,15 +100,26 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
-                    <a href="/login" class="loginBtn mr-2 py-3 px-7 hover:bg-green-600 rounded-lg duration-300 ease-in-out text-base font-medium text-white hover:opacity-100">
-                        Login
-                    </a>
-                    <a href="/register"
-                        class="signUpBtn rounded-lg bg-white bg-opacity-50 py-3 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark">
-                        Register
-                    </a>
-                </div>
+                @auth
+                    <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
+                        <a href="/dashboard"
+                            class="signUpBtn flex flex-row rounded-lg bg-white bg-opacity-50 py-3 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark">
+                            <i class="material-icons mr-2 -ml-3">dashboard</i> Dashboard
+                        </a>
+                    </div>
+                @endauth
+                @guest
+                    <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
+                        <a href="/login"
+                            class="loginBtn mr-2 py-3 px-7 hover:text-white hover:bg-green-600 rounded-lg duration-300 ease-in-out text-base font-medium text-white hover:opacity-100">
+                            Login
+                        </a>
+                        <a href="/register"
+                            class="signUpBtn rounded-lg bg-white bg-opacity-50 py-3 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark">
+                            Register
+                        </a>
+                    </div>
+                @endguest
             </div>
         </div>
     </div>

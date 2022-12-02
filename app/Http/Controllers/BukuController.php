@@ -13,11 +13,19 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function katalog() {
+        return view('katalog', [
+            'title' => 'Katalog Buku',
+            'data_buku' => Buku::latest()->get()
+        ]);
+    }
+
     public function index()
     {
         return view('dashboard.buku.index', [
             'judul' => 'Data Buku',
-            'data_buku' => Buku::all()
+            'data_buku' => Buku::latest()->paginate(10)
         ]);
     }
 

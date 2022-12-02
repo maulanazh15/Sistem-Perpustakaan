@@ -18,7 +18,7 @@ class PustakawanController extends Controller
     {
         return view('dashboard.kepala.pustakawan.index', [
             'judul' => 'Data Pustakawan',
-            'data_pustakawan' => User::where('status','pustakawan')->get()
+            'data_pustakawan' => User::where('status','pustakawan')->paginate(10)
         ]);
     }
 

@@ -13,4 +13,10 @@ class Buku extends Model
     protected $guarded = ['id'];
     // protected $primaryKey = ['kode_buku'];
    
+    public function buku()
+    {
+        return $this->hasOne(Peminjaman::class);
+    }
+    
+    
 }

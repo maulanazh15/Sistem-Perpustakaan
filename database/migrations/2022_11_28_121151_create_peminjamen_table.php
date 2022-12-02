@@ -13,10 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('peminjamen', function (Blueprint $table) {
-            $table->id();
+        
+        Schema::create('peminjaman', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignUuid('buku_id');
+            $table->foreignUuid('user_id');
+            $table->timestamp('tanggal_peminjaman');
+            $table->timestamp('tanggal_pengembalian');
+            $table->string('status_peminjaman');
             $table->timestamps();
         });
+        // Schema::rename('peminjamen', 'peminjaman');
     }
 
     /**
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peminjamen');
+        Schema::dropIfExists('peminjaman');
     }
 };
