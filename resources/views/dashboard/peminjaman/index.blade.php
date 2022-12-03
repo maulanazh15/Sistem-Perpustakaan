@@ -65,136 +65,186 @@
                                 <td data-label="Name">{{ $peminjaman->id }}</td>
                                 <td data-label="Company">{{ $peminjaman->user->name }}</td>
                                 <td data-label="City">{{ $peminjaman->buku->judul_buku }}</td>
-                                <td data-label="City">{{ $peminjaman->tanggal_peminjaman }}</td>
-                                <td data-label="City">{{ $peminjaman->tanggal_pengembalian }}</td>
+                                <td data-label="City">
+                                    {{ $carbon::parse($peminjaman->tanggal_peminjaman)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}
+                                </td>
+                                <td data-label="City">
+                                    {{ $carbon::parse($peminjaman->tanggal_pengembalian)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}
+                                </td>
                                 {{-- <td data-label="Created">
                                     <small class="text-gray-500"
                                         title="Oct 25, 2021">{{ $peminjaman->created_at->diffForHumans() }}</small>
                                 </td> --}}
-                                <td data-label="City"><button
-                                        class="chip @if ($peminjaman->status_peminjaman == 'dipinjam') {{ 'chip-green' }} @else {{ 'chip-orange' }} @endif"
-                                        disabled>{{ $peminjaman->status_peminjaman }}</button></td>
+                                <td data-label="City">
+                                    @if ($peminjaman->status_peminjaman == 'dipinjam')
+                                        <button class="chip chip-pink"
+                                            disabled>{{ $peminjaman->status_peminjaman }}</button>
+                                    @elseif ($peminjaman->status_peminjaman == 'book')
+                                        <button class="chip chip-orange"
+                                            disabled>{{ $peminjaman->status_peminjaman }}</button>
+                                    @else 
+                                    <button class="chip chip-green"
+                                    disabled>{{ $peminjaman->status_peminjaman }}</button>
+                                    @endif
+                                </td>
                                 {{-- <td data-label="Progress" class="progress-cell">
                 <progress max="100" value="79">79</progress>
               </td> --}}
                                 <td class="actions-cell">
                                     @if ($peminjaman->status_peminjaman == 'dipinjam')
-                                    <button type="submit" class="button button-pink mr-2 flex flex-row align-middle mb-2"
-                                    dialog-trigger="true" data-ripple-light="true">
-                                    <i class="material-icons -ml-3 mr-2">check</i>
-                                    <div>Pengembalian</div>
-                                </button>
-                                <div class="dialog">
-                                    <div class="dialog-overlay" dialog-close="true"></div>
-                                    <div class="modal-dialog">
-                                        <div class="dialog-content">
-                                            <div class="dialog-header">
-                                                <h6 class="mb-0">Setujui Pengembalian</h6>
-                                                <button type="button" class="me-0 button-close" dialog-close="true"
-                                                    aria-label="Close">
-                                                    <i class="material-icons">close</i>
-                                                </button>
-                                            </div>
-                                            <div class="dialog-body">
-                                                <p class="opacity-60">
-                                                    Apakah Anda Yakin ingin menyetujui pengembalian ini?
-                                                </p>
-                                            </div>
-                                            <div class="dialog-footer">
-                                                <button class="button button-gradient button-blue mr-3 mb-0"
-                                                    dialog-close="true">
-                                                    Tidak
-                                                </button>
-                                                <a href="/dashboard/peminjaman/{{ $peminjaman->id }}/update"
-                                                    class="button button-gradient button-red" dialog-trigger="true"
-                                                    data-ripple-light="true">
-                                                    Ya
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                    @else
-                                        <button type="submit" class="button button-green mr-2 flex flex-row align-middle mb-2"
-                                        dialog-trigger="true" data-ripple-light="true"
-                                        @if ($peminjaman->status_peminjaman == 'dipinjam') @disabled(true) @endif>
-                                        <i class="material-icons -ml-3 mr-2">check</i>
-                                        <div>Setujui</div>
-                                    </button>
-                                    <div class="dialog">
-                                        <div class="dialog-overlay" dialog-close="true"></div>
-                                        <div class="modal-dialog">
-                                            <div class="dialog-content">
-                                                <div class="dialog-header">
-                                                    <h6 class="mb-0">Setujui Peminjaman</h6>
-                                                    <button type="button" class="me-0 button-close" dialog-close="true"
-                                                        aria-label="Close">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </div>
-                                                <div class="dialog-body">
-                                                    <p class="opacity-60">
-                                                        Apakah Anda Yakin ingin menyetujui peminjaman ini?
-                                                    </p>
-                                                </div>
-                                                <div class="dialog-footer">
-                                                    <button class="button button-gradient button-blue mr-3 mb-0"
-                                                        dialog-close="true">
-                                                        Tidak
-                                                    </button>
-                                                    <a href="/dashboard/peminjaman/{{ $peminjaman->id }}/update"
-                                                        class="button button-gradient button-red" dialog-trigger="true"
-                                                        data-ripple-light="true">
-                                                        Ya
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="button button-red flex flex-row align-middle" dialog-trigger="true"
-                                        data-ripple-light="true">
-                                        <i class="material-icons -ml-3 mr-2">cancel</i>
-                                        <div>Batalkan</div>
-                                    </button>
-                                    <div class="dialog">
-                                        <div class="dialog-overlay" dialog-close="true"></div>
-                                        <div class="modal-dialog">
-                                            <div class="dialog-content">
-                                                <div class="dialog-header">
-                                                    <h6 class="mb-0">Batalkan Peminjaman</h6>
-                                                    <button type="button" class="me-0 button-close" dialog-close="true"
-                                                        aria-label="Close">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </div>
-                                                <div class="dialog-body">
-                                                    <p class="opacity-60">
-                                                        Apakah Anda Yakin ingin menghapus peminjaman ini?
-                                                    </p>
-                                                </div>
-                                                <div class="dialog-footer">
-                                                    <button class="button button-gradient button-blue mr-3 mb-0"
-                                                        dialog-close="true">
-                                                        Tidak
-                                                    </button>
-                                                    <form action="/dashboard/peminjaman/{{ $peminjaman->id }}"
-                                                        class="ml-1" method="post">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button class="button button-gradient button-red"
-                                                            dialog-trigger="true" data-ripple-light="true">
-                                                            Ya
+                                        <button
+                                            class="button button-green mr-2 flex flex-row align-middle mb-2"
+                                            dialog-trigger="true" data-ripple-light="true">
+                                            <i class="material-icons -ml-3 mr-2">check</i>
+                                            <div>Perpanjang</div>
+                                        </button>
+                                        <div class="dialog">
+                                            <div class="dialog-overlay" dialog-close="true"></div>
+                                            <div class="modal-dialog">
+                                                <div class="dialog-content">
+                                                    <div class="dialog-header">
+                                                        <h6 class="mb-0">Setujui Perpanjangan</h6>
+                                                        <button type="button" class="me-0 button-close" dialog-close="true"
+                                                            aria-label="Close">
+                                                            <i class="material-icons">close</i>
                                                         </button>
-                                                    </form>
+                                                    </div>
+                                                    <div class="dialog-body">
+                                                        <p class="opacity-60">
+                                                            Apakah Anda Yakin ingin menyetujui perpanjangan peminjaman buku ini?
+                                                        </p>
+                                                    </div>
+                                                    <div class="dialog-footer">
+                                                        <button class="button button-gradient button-blue mr-3 mb-0"
+                                                            dialog-close="true">
+                                                            Tidak
+                                                        </button>
+                                                        <a href="/dashboard/peminjaman/{{ $peminjaman->id }}/perpanjangan"
+                                                            class="button button-gradient button-red" dialog-trigger="true"
+                                                            data-ripple-light="true">
+                                                            Ya
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                    @endif
-                                    
-                            </td>
-                        </tr>
+                                        <button
+                                            class="button button-pink mr-2 flex flex-row align-middle mb-2"
+                                            dialog-trigger="true" data-ripple-light="true">
+                                            <i class="material-icons -ml-3 mr-2">check</i>
+                                            <div>Pengembalian</div>
+                                        </button>
+                                        <div class="dialog">
+                                            <div class="dialog-overlay" dialog-close="true"></div>
+                                            <div class="modal-dialog">
+                                                <div class="dialog-content">
+                                                    <div class="dialog-header">
+                                                        <h6 class="mb-0">Setujui Pengembalian</h6>
+                                                        <button type="button" class="me-0 button-close" dialog-close="true"
+                                                            aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="dialog-body">
+                                                        <p class="opacity-60">
+                                                            Apakah Anda Yakin ingin menyetujui pengembalian ini?
+                                                        </p>
+                                                    </div>
+                                                    <div class="dialog-footer">
+                                                        <button class="button button-gradient button-blue mr-3 mb-0"
+                                                            dialog-close="true">
+                                                            Tidak
+                                                        </button>
+                                                        <a href="/dashboard/peminjaman/{{ $peminjaman->id }}/pengembalian"
+                                                            class="button button-gradient button-red" dialog-trigger="true"
+                                                            data-ripple-light="true">
+                                                            Ya
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <button
+                                            class="button button-green mr-2 flex flex-row align-middle mb-2"
+                                            dialog-trigger="true" data-ripple-light="true">
+                                            <i class="material-icons -ml-3 mr-2">check</i>
+                                            <div>Setujui</div>
+                                        </button>
+                                        <div class="dialog">
+                                            <div class="dialog-overlay" dialog-close="true"></div>
+                                            <div class="modal-dialog">
+                                                <div class="dialog-content">
+                                                    <div class="dialog-header">
+                                                        <h6 class="mb-0">Setujui Peminjaman</h6>
+                                                        <button type="button" class="me-0 button-close" dialog-close="true"
+                                                            aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="dialog-body">
+                                                        <p class="opacity-60">
+                                                            Apakah Anda Yakin ingin menyetujui peminjaman ini?
+                                                        </p>
+                                                    </div>
+                                                    <div class="dialog-footer">
+                                                        <button class="button button-gradient button-blue mr-3 mb-0"
+                                                            dialog-close="true">
+                                                            Tidak
+                                                        </button>
+                                                        <a href="/dashboard/peminjaman/{{ $peminjaman->id }}/update"
+                                                            class="button button-gradient button-red" dialog-trigger="true"
+                                                            data-ripple-light="true">
+                                                            Ya
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="button button-red flex flex-row align-middle mb-2"
+                                            dialog-trigger="true" data-ripple-light="true">
+                                            <i class="material-icons -ml-3 mr-2">cancel</i>
+                                            <div>Batalkan</div>
+                                        </button>
+                                        <div class="dialog">
+                                            <div class="dialog-overlay" dialog-close="true"></div>
+                                            <div class="modal-dialog">
+                                                <div class="dialog-content">
+                                                    <div class="dialog-header">
+                                                        <h6 class="mb-0">Batalkan Peminjaman</h6>
+                                                        <button type="button" class="me-0 button-close" dialog-close="true"
+                                                            aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="dialog-body">
+                                                        <p class="opacity-60">
+                                                            Apakah Anda Yakin ingin membatalkan peminjaman buku ini?
+                                                        </p>
+                                                    </div>
+                                                    <div class="dialog-footer">
+                                                        <button class="button button-gradient button-blue mr-3 mb-0"
+                                                            dialog-close="true">
+                                                            Tidak
+                                                        </button>
+                                                        <form action="/dashboard/peminjaman/{{ $peminjaman->id }}/delete"
+                                                            class="ml-1" method="post">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class="button button-gradient button-red"
+                                                                dialog-trigger="true" data-ripple-light="true">
+                                                                Ya
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        </div>
+        @endif
+
+        </td>
+        </tr>
         @endforeach
         </tbody>
         </table>

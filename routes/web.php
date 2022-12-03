@@ -146,5 +146,9 @@ Route::resource('/dashboard/peminjam', PeminjamController::class);
 
 Route::get('/dashboard/peminjaman', [PeminjamanController::class, 'index']);
 Route::get('/dashboard/peminjaman/{peminjaman:id}/update', [PeminjamanController::class, 'update']);
+Route::delete('/dashboard/peminjaman/{peminjaman:id}/delete', [PeminjamanController::class, 'destroy']);
+Route::get('/dashboard/peminjaman/{peminjaman:id}/perpanjangan', [PeminjamanController::class, 'perpanjangan']);
+Route::get('/dashboard/peminjaman/{peminjaman:id}/pengembalian', [PeminjamanController::class, 'pengembalian']);
+Route::get('/dashboard/histori', [PeminjamanController::class, 'histori']);
 
 

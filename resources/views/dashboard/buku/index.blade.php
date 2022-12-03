@@ -70,7 +70,7 @@
                                     <small class="text-gray-500"
                                         title="Oct 25, 2021">{{ $buku->created_at->diffForHumans() }}</small>
                                 </td>
-                                <td data-label="City"><button class="chip chip-green">{{ $buku->status_buku }}</button></td>
+                                <td data-label="City"><button class="chip  @if($buku->status_buku == 'dipinjam') {{'chip-pink'}} @elseif($buku->status_buku == 'book'){{'chip-orange'}} @else {{'chip-green'}} @endif">{{ $buku->status_buku }}</button></td>
                                 {{-- <td data-label="Progress" class="progress-cell">
                 <progress max="100" value="79">79</progress>
               </td> --}}
