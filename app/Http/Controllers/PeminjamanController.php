@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peminjaman;
-use App\Http\Requests\StorePeminjamanRequest;
-use App\Http\Requests\UpdatePeminjamanRequest;
-use App\Models\Buku;
 use Carbon\Carbon;
+use App\Models\Buku;
+use App\Models\User;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StorePeminjamanRequest;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
+use App\Http\Requests\UpdatePeminjamanRequest;
 
 class PeminjamanController extends Controller
 {
@@ -16,6 +20,36 @@ class PeminjamanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function laporan()
+    {
+        $month = now()->month;
+        $data_peminjaman = Peminjaman::whereMonth('created_at', $month)->groupBy('day')
+        ->orderBy('day', 'ASC')
+        ->get(array(
+            DB::raw('DAY(created_at) as day'),
+            DB::raw('COUNT(*) as "total"')
+        ));
+        $sum_peminjaman = array();
+        $day_date = array();
+        for ($i=0; $i < count($data_peminjaman) ; $i++) { 
+            $sum_peminjaman[$i] = $data_peminjaman[$i]->total;
+            $day_date[$i] = $data_peminjaman[$i]->day;
+        }
+       
+
+        $chart = (new LarapexChart)->lineChart()
+        ->setTitle('Jumlah Peminjaman Di Bulan '.now()->locale('id')->monthName)
+        ->setSubtitle('Jumlah peminjaman per tanggal')
+        ->addData('Jumlah Peminjaman',$sum_peminjaman)
+        ->setXAxis($day_date)->setGrid();
+        return view('dashboard.peminjaman.laporan', [
+            'judul' => 'Laporan Peminjaman Buku',
+            'data_peminjaman' => Peminjaman::latest()->paginate(10),
+            'carbon' => Carbon::class,
+            'chart' => $chart
+        ]);
+    }
 
     public function histori(Request $request)
     {

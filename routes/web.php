@@ -59,7 +59,7 @@ Route::get('/register', function () {
 
 // Register dan Login
 Route::post('/register', [RegisterController::class, 'store']);
-Route::post('/login', [UserController::class, 'authenticate']);
+Route::post('/login', [UserController::class, 'authenticate'])->name('login');
 Route::post('/logout', [UserController::class, 'logout']);
 
 Route::get('/pricing', function () {
@@ -99,7 +99,7 @@ Route::get('/dashboard',function(){
     return view('dashboard.index' , [
         'judul' => 'Dashboard'
     ]);
-});
+})->middleware('auth');
 Route::get('/dashboard/forms',function(){
     return view('dashboard.forms', [
         'judul' => 'Form'
@@ -129,26 +129,29 @@ Route::post('/booking', [PeminjamanController::class, 'booking']);
 
 // Model Buku View
 
-Route::resource('/dashboard/buku', BukuController::class);
+Route::resource('/dashboard/buku', BukuController::class)->middleware(['pustakawan']);
 
 // Model Pustakawan view
 
-Route::delete('/dashboard/pustakawan/{user:id}', [PustakawanController::class, 'destroy']);
+Route::delete('/dashboard/pustakawan/{user:id}', [PustakawanController::class, 'destroy'])->middleware('kepala');
 
-Route::resource('/dashboard/pustakawan', PustakawanController::class);
+Route::resource('/dashboard/pustakawan', PustakawanController::class)->middleware('kepala');
 
 // Model Peminjam View
  
-Route::delete('/dashboard/peminjam/{user:id}', [PeminjamController::class, 'destroy']);
-Route::resource('/dashboard/peminjam', PeminjamController::class);
+Route::get('/dashboard/peminjam/laporan', [PeminjamController::class, 'laporan'])->middleware(['pustakawan']);
+Route::delete('/dashboard/peminjam/{user:id}', [PeminjamController::class, 'destroy'])->middleware(['pustakawan']);
+Route::resource('/dashboard/peminjam', PeminjamController::class)->middleware(['pustakawan']);
 
 //Model Peminjaman Buku View
 
-Route::get('/dashboard/peminjaman', [PeminjamanController::class, 'index']);
-Route::get('/dashboard/peminjaman/{peminjaman:id}/update', [PeminjamanController::class, 'update']);
-Route::delete('/dashboard/peminjaman/{peminjaman:id}/delete', [PeminjamanController::class, 'destroy']);
-Route::get('/dashboard/peminjaman/{peminjaman:id}/perpanjangan', [PeminjamanController::class, 'perpanjangan']);
-Route::get('/dashboard/peminjaman/{peminjaman:id}/pengembalian', [PeminjamanController::class, 'pengembalian']);
-Route::get('/dashboard/histori', [PeminjamanController::class, 'histori']);
+
+Route::get('/dashboard/peminjaman/laporan', [PeminjamanController::class, 'laporan'])->middleware(['kepala']);
+Route::get('/dashboard/peminjaman', [PeminjamanController::class, 'index'])->middleware(['pustakawan']);
+Route::get('/dashboard/peminjaman/{peminjaman:id}/update', [PeminjamanController::class, 'update'])->middleware(['pustakawan']);
+Route::delete('/dashboard/peminjaman/{peminjaman:id}/delete', [PeminjamanController::class, 'destroy'])->middleware(['pustakawan']);
+Route::get('/dashboard/peminjaman/{peminjaman:id}/perpanjangan', [PeminjamanController::class, 'perpanjangan'])->middleware(['pustakawan']);
+Route::get('/dashboard/peminjaman/{peminjaman:id}/pengembalian', [PeminjamanController::class, 'pengembalian'])->middleware(['pustakawan']);
+Route::get('/dashboard/histori', [PeminjamanController::class, 'histori'])->middleware('auth');
 
 

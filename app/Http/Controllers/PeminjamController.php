@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class PeminjamController extends Controller
 {
@@ -14,11 +15,41 @@ class PeminjamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function laporan()
+    {
+        $month = now()->month;
+        $data_peminjam = User::where('role','peminjam')->whereMonth('created_at', $month)->groupBy('day')
+        ->orderBy('day', 'ASC')
+        ->get(array(
+            DB::raw('DAY(created_at) as day'),
+            DB::raw('COUNT(*) as "total"')
+        ));
+        $sum_peminjam = array();
+        $day_date = array();
+        for ($i=0; $i < count($data_peminjam) ; $i++) { 
+            $sum_peminjam[$i] = $data_peminjam[$i]->total;
+            $day_date[$i] = $data_peminjam[$i]->day;
+        }
+       
+
+        $chart = (new LarapexChart)->lineChart()
+        ->setTitle('Jumlah Peminjam Di Bulan '.now()->locale('id')->monthName)
+        ->setSubtitle('Jumlah peminjam per tanggal')
+        ->addData('Jumlah Peminjam',$sum_peminjam)
+        ->setXAxis($day_date)->setGrid();
+        return view('dashboard.peminjam.laporan', [
+            'judul' => 'Laporan Data Peminjam Buku',
+            'data_peminjam' => User::where('role','peminjam')->paginate(10),
+            'chart' => $chart
+        ]);
+    }
+
     public function index()
     {
         return view('dashboard.peminjam.index', [
             'judul' => 'Data Peminjam',
-            'data_peminjam' => User::where('status','peminjam')->paginate(10)
+            'data_peminjam' => User::where('role','peminjam')->paginate(10)
         ]);
     }
 
@@ -51,7 +82,7 @@ class PeminjamController extends Controller
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
         $validatedData['password'] = Hash::make($validatedData['password']);
-        $validatedData['status'] = 'peminjam';
+        $validatedData['role'] = 'peminjam';
         $validatedData['isAktif'] = 0;
 
         User::create($validatedData);

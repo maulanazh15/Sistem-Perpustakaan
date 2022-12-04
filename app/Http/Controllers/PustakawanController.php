@@ -18,7 +18,7 @@ class PustakawanController extends Controller
     {
         return view('dashboard.kepala.pustakawan.index', [
             'judul' => 'Data Pustakawan',
-            'data_pustakawan' => User::where('status','pustakawan')->paginate(10)
+            'data_pustakawan' => User::where('role','pustakawan')->paginate(10)
         ]);
     }
 
@@ -51,7 +51,7 @@ class PustakawanController extends Controller
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
         $validatedData['password'] = Hash::make($validatedData['password']);
-        $validatedData['status'] = 'pustakawan';
+        $validatedData['role'] = 'pustakawan';
         $validatedData['isAktif'] = 0;
 
         User::create($validatedData);

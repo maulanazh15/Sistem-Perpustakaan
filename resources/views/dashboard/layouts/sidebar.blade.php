@@ -17,7 +17,8 @@
                 </a>
             </li>
         </ul>
-        <p class="menu-label">Admin</p>
+        @can('kepala')
+        <p class="menu-label">Kepala</p>
         <ul class="menu-list">
             <li class="{{ Request::is('dashboard/buku') ? 'active' : '' }}">
                 <a class="dropdown">
@@ -70,7 +71,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#void">
+                        <a href="/dashboard/peminjam/laporan">
                             <span>Laporan Data Peminjam</span>
                         </a>
                     </li>
@@ -88,7 +89,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#void">
+                        <a href="/dashboard/peminjaman/laporan">
                             <span>Laporan Data Peminjaman Buku</span>
                         </a>
                     </li>
@@ -144,6 +145,148 @@
                 </ul>
             </li>
         </ul>
+        @endcan
+        @can('pustakawan')
+        <p class="menu-label">Pustakawan</p>
+        <ul class="menu-list">
+            <li class="{{ Request::is('dashboard/buku') ? 'active' : '' }}">
+                <a class="dropdown">
+                    <span class="icon"><i class="mdi mdi-book"></i></span>
+                    <span class="menu-item-label">Buku</span>
+                    {{-- <span class="icon"><i class="mdi mdi-plus"></i></span> --}}
+                </a>
+                <ul>
+                    <li>
+                        <a href="/dashboard/buku">
+                            <span>Data Buku</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#void">
+                            <span>Laporan Data Buku</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{-- <li class="{{ Request::is('dashboard/pustakawan') ? 'active' : '' }}">
+              <a class="dropdown">
+                <span class="icon"><i class="mdi mdi-account-supervisor"></i></span>
+                <span class="menu-item-label">Pustakawan</span>
+                {{-- <span class="icon"><i class="mdi mdi-plus"></i></span>
+              </a>
+              <ul>
+                <li>
+                  <a href="/dashboard/pustakawan">
+                    <span>Data Pustakawan</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#void">
+                    <span>Laporan Data Pustakawan</span>
+                  </a>
+                </li>
+              </ul>
+            </li> --}} 
+            <li class="{{ Request::is('dashboard/peminjam') ? 'active' : '' }}">
+                <a class="dropdown">
+                    <span class="icon"><i class="mdi mdi-account"></i></span>
+                    <span class="menu-item-label">Peminjam</span>
+                    {{-- <span class="icon"><i class="mdi mdi-minus"></i></span> --}}
+                </a>
+                <ul>
+                    <li>
+                        <a href="/dashboard/peminjam">
+                            <span>Data Peminjam</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/peminjam/laporan">
+                            <span>Laporan Data Peminjam</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="{{ Request::is('dashboard/peminjaman') ? 'active' : '' }}">
+                <a class="dropdown">
+                    <span class="icon"><i class="mdi mdi-book"></i></span>
+                    <span class="menu-item-label">Peminjaman Buku</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/dashboard/peminjaman">
+                            <span>Data Peminjaman Buku</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/peminjaman/laporan">
+                            <span>Laporan Data Peminjaman Buku</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{-- <li class="{{ Request::is('dashboard/histori') ? 'active' : '' }}">
+                <a href="/dashboard/histori">
+                    <span class="icon"><i class="mdi mdi-history"></i></span>
+                    <span class="menu-item-label">Histori Peminjaman</span>
+                </a>
+            </li> --}}
+            {{-- <li class="{{ Request::is('dashboard/tables') ? 'active' : '' }}">
+                <a href="/dashboard/tables">
+                    <span class="icon"><i class="mdi mdi-table"></i></span>
+                    <span class="menu-item-label">Tables</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('dashboard/forms') ? 'active' : '' }}">
+                <a href="/dashboard/forms">
+                    <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
+                    <span class="menu-item-label">Forms</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('dashboard/profile') ? 'active' : '' }}">
+                <a href="/dashboard/profile">
+                    <span class="icon"><i class="mdi mdi-account-circle"></i></span>
+                    <span class="menu-item-label">Profile</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('dashboard/login') ? 'active' : '' }}">
+                <a href="/dashboard/login">
+                    <span class="icon"><i class="mdi mdi-lock"></i></span>
+                    <span class="menu-item-label">Login</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown">
+                    <span class="icon"><i class="mdi mdi-view-list"></i></span>
+                    <span class="menu-item-label">Submenus</span>
+                    <span class="icon"><i class="mdi mdi-plus"></i></span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#void">
+                            <span>Sub-item One</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#void">
+                            <span>Sub-item Two</span>
+                        </a>
+                    </li>
+                </ul>
+            </li> --}}
+        </ul>
+        @endcan
+        @can('pemijam')
+        <p class="menu-label">Peminjam</p>
+        <ul class="menu-list">
+            <li class="{{ Request::is('dashboard/histori') ? 'active' : '' }}">
+                <a href="/dashboard/histori">
+                    <span class="icon"><i class="mdi mdi-history"></i></span>
+                    <span class="menu-item-label">Histori Peminjaman</span>
+                </a>
+            </li>
+        </ul>
+        @endcan
+        
         <p class="menu-label">About</p>
         <ul class="menu-list">
             <li>

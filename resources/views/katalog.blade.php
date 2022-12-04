@@ -34,9 +34,9 @@
                             @elseif($buku->status_buku == 'dipinjam')
                                 <button class="chip chip-pink" disabled>Dipinjam</button>
                             @else 
-                            <button class="chip chip-green" disabled>Tersedia</button>
+                                <button class="chip chip-green" disabled>Tersedia</button>
                             @endif
-                            <button class="button button-orange">Detail</button>
+                            
                             @auth
                                 @if ($buku->status_buku == 'book' || $buku->status_buku == 'dipinjam')
                                 {{-- <button class="button button-pink order-last" dialog-trigger="true"
@@ -59,8 +59,16 @@
                                             </div>
                                             <div class="dialog-body">
                                                 <div class="py-3 text-center">
-                                                    <i class="fa fa-star text-3xl text-dark-500"></i>
-                                                    <h4 class="mt-4 text-red-500">Anda harus baca ini!</h4>
+                                                    <h5 class="mt-2 text-red-500">{{ $buku->judul_buku }}</h5>
+                                                    <div class="flex flex-col mb-2 border border-blue-gray-600 p-2 rounded-lg">
+                                                        <img class="w-1/3 rounded-lg self-center mb-2" src="images/blog/cover.png" alt="card image"/>
+                                                        <p>Penulis     : {{ $buku->penulis }}</p>
+                                                        <p>Penerbit    : {{ $buku->penerbit }}</p>
+                                                        <p>Tahun       : {{ $buku->tahun_terbit }}</p>
+                                                        <p>Kategori    : {{ $buku->kategori }}</p>
+                                                        <p>Jumlah Buku : {{ $buku->jumlah_buku }}</p>
+                                                        <p>ISBN        : {{ $buku->isbn }}</p>
+                                                    </div>
                                                     <p class="opacity-60">
                                                         Apakah anda yakin ingin meminjam buku ini?
                                                     </p>

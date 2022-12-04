@@ -18,7 +18,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('username')->unique();
             $table->string('name');
-            $table->string('status');
+            $table->string('role');
             $table->boolean('isAktif')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

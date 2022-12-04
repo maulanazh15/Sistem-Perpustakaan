@@ -25,11 +25,22 @@ class DatabaseSeeder extends Seeder
                 'username' => fake()->userName(),
                 'email' => fake()->unique()->safeEmail(),
                 'email_verified_at' => now(),
-                'status' => 'peminjam',
+                'role' => 'peminjam',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ]);
         }
+
+        User::factory()->create([
+            'name' => 'Maulana Zhahran',
+            'username' => 'maulana.zhahran',
+            'email' => 'tester@gmail.com',
+            'email_verified_at' => now(),
+            'role' => 'kepala',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'remember_token' => Str::random(10)
+        ]);
+
         $jumlah_pustakawan = 10;
         for ($i = 0; $i < $jumlah_pustakawan; $i++) {
             User::factory()->create([
@@ -37,7 +48,7 @@ class DatabaseSeeder extends Seeder
                 'username' => fake()->userName(),
                 'email' => fake()->unique()->safeEmail(),
                 'email_verified_at' => now(),
-                'status' => 'pustakawan',
+                'role' => 'pustakawan',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ]);
