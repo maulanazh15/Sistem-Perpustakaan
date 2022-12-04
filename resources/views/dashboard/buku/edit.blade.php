@@ -1,11 +1,14 @@
 @extends('dashboard.layouts.main')
 @section('container')
     <div class="card mb-6">
-      <header class="card-header">
+      <header class="card-header flex flex-row">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-ballot"></i></span>
           Forms
         </p>
+        <a href="/dashboard/buku" class="mr-3 order-last button button-icon button-red mt-2 mb-3">
+          <i class="material-icons">arrow_back</i>
+        </a>
       </header>
       <div class="card-content">
         <form action="/dashboard/buku/{{ $buku->id }}" method="post" enctype="multipart/form-data">

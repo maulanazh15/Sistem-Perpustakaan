@@ -4,6 +4,21 @@
     <!-- ====== Blog Section Start -->
     <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 bg-gradient-to-r from-cyan-500 to-blue-500">
         <div class="container">
+            <form action="/">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="flex border-2 rounded">
+                        <input name="search" type="text" class="px-4 py-2 w-80" placeholder="Cari judul buku">
+                        <button type="submit" class="flex items-center justify-center px-4 border-l">
+                            <svg class="w-6 h-6 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
             @if (session()->has('berhasil'))
                 <div class="alert alert-gradient alert-green w-50">{{ session('berhasil') }}</div>
             @endif
@@ -11,8 +26,14 @@
                 @foreach ($data_buku as $buku)
                     <div class="card">
                         <div class="card-header mx-4 mt-6">
-                            <a href="/{{ $buku->id }}/detail-buku" blur-shadow-image="true">
-                                <img class="w-auto rounded-lg" src="images/blog/cover.png" alt="card image" />
+                            <a href="#" blur-shadow-image="true">
+                                <img class="w-auto rounded-lg" 
+                                @if ($buku->foto_buku)
+                                src="{{ asset('storage/' . $buku->foto_buku) }}"
+                                @else
+                                src="images/blog/cover.png"
+                                @endif
+                                 alt="card image" />
                             </a>
                         </div>
                         <div class="card-body">
@@ -61,7 +82,11 @@
                                                 <div class="py-3 text-center">
                                                     <h5 class="mt-2 text-red-500">{{ $buku->judul_buku }}</h5>
                                                     <div class="flex flex-col mb-2 border border-blue-gray-600 p-2 rounded-lg">
-                                                        <img class="w-1/3 rounded-lg self-center mb-2" src="images/blog/cover.png" alt="card image"/>
+                                                        <img class="w-1/3 rounded-lg self-center mb-2" @if ($buku->foto_buku)
+                                                        src="{{ asset('storage/' . $buku->foto_buku) }}"
+                                                        @else
+                                                        src="images/blog/cover.png"
+                                                        @endif alt="card image"/>
                                                         <p>Penulis     : {{ $buku->penulis }}</p>
                                                         <p>Penerbit    : {{ $buku->penerbit }}</p>
                                                         <p>Tahun       : {{ $buku->tahun_terbit }}</p>
@@ -131,16 +156,13 @@
               </div>  --}}
                 @endforeach
             </div>
+            <div class="flex flex-row-reverse items-center justify-between">
+                {{ $data_buku->links() }}
+            </div>
         </div>
     </section>
     <!-- from cdn -->
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
     <!-- ====== Blog Section End -->
-    <!-- <script>
-        $(document).ready(function() {
-            $('#pinjam').click(function() {
 
-            })
-        });
-    </script> -->
 @endsection

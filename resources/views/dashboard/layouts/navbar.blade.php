@@ -44,7 +44,6 @@
                     <button type="submit" name="logout" class="button button-pink button-gradient button-icon">
                         <i class="material-icons">logout</i>
                     </button>
-                    
             </form>
             
         </div>

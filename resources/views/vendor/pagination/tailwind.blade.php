@@ -24,7 +24,7 @@
 
         <div class="hidden sm:flex-1 sm:flex sm:items-center space-x-3 sm:justify-between">
             <div>
-                <p class="text-sm text-gray-700 leading-5">
+                <p class="text-sm text-black leading-5">
                     {!! __('Menunjukkan') !!}
                     @if ($paginator->firstItem())
                         <span class="font-medium">{{ $paginator->firstItem() }}</span>

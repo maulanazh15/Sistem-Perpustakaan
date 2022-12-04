@@ -1,11 +1,14 @@
 @extends('dashboard.layouts.main')
 @section('container')
     <div class="card mb-6">
-      <header class="card-header">
+      <header class="card-header flex flex-row">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-ballot"></i></span>
           Forms
         </p>
+        <a href="/dashboard/buku" class="mr-3 order-last button button-icon button-red mt-2 mb-3">
+          <i class="material-icons">arrow_back</i>
+        </a>
       </header>
       <div class="card-content">
         <form action="/dashboard/buku" method="post" enctype="multipart/form-data">
@@ -90,10 +93,23 @@
             </p>
             @enderror
           </div>
+          
           <div class="field">
             <label class="label">Kategori</label>
             <div class="control">
-              <input class="input" type="text" name="kategori" placeholder="">
+              <div class="select">
+                <select name="kategori">
+                  <option value="Novel">Novel</option>
+                  <option value="Majalah">Majalah</option>
+                  <option value="Kamus">Kamus</option>
+                  <option value="Komik">Komik</option>
+                  <option value="Manga">Manga</option>
+                  <option value="Ensiklopedia">Ensiklopedia</option>
+                  <option value="Biografi">Biografi</option>
+                  <option value="Naskah">Naskah</option>
+                  <option value="Light Novel">Ligth novel</option>
+                </select>
+              </div>
             </div>
             @error('kategori')
             <p class="help text-red-500">

@@ -144,7 +144,10 @@ class PeminjamanController extends Controller
 
     public function pengembalian(Peminjaman $peminjaman)
     {
-        Peminjaman::where('id',$peminjaman->id)->update(['status_peminjaman'=>'dikembalikan']);
+        if(now() > $peminjaman->tanggal_pengembalian) {
+            Peminjaman::where('id', $peminjaman->id)->update(['denda' => 1000]);
+        }
+        Peminjaman::where('id',$peminjaman->id)->update(['status_peminjaman'=>'dikembalikan', 'tanggal_pengembalian' => now()]);
         Buku::where('id',$peminjaman->buku_id)->update(['status_buku' => 'tersedia']);
         return redirect()->back()->with('berhasil','Pengembalian buku berhasil');
     }

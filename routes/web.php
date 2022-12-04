@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\BukuController;
-use App\Http\Controllers\PeminjamanController;
-use App\Http\Controllers\PeminjamController;
-use App\Http\Controllers\PustakawanController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\UserController;
+use App\Models\User;
+use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PeminjamController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PustakawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/example', function(){
-    return view('example');
-});
+// Route::get('/example', function(){
+//     return view('example');
+// });
 
-Route::get('/welcome',function(){
-    return view('welcome');
-});
+// Route::get('/welcome',function(){
+//     return view('welcome');
+// });
 
 
-Route::get('/', function () {
-    return view('index', [
-        'title' => 'Home',
-    ]);
-});
+// Route::get('/', function () {
+//     return view('index', [
+//         'title' => 'Home',
+//     ]);
+// });
 
 Route::get('/about', function () {
     return view('about',[
@@ -40,11 +42,11 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/team', function () {
-    return view('team',[
-        'title' => 'Team'
-    ]);
-});
+// Route::get('/team', function () {
+//     return view('team',[
+//         'title' => 'Team'
+//     ]);
+// });
 
 Route::get('/login', function () {
     return view('login.index',[
@@ -72,11 +74,11 @@ Route::get('/contact', function () {
         'title' => 'Contact'
     ]);
 });
-Route::get('/katalogbuku', function () {
-    return view('blog-grids',[
-        'title' => 'My Blog'
-    ]);
-});
+// Route::get('/katalogbuku', function () {
+//     return view('blog-grids',[
+//         'title' => 'My Blog'
+//     ]);
+// });
 Route::get('/blog-grids', function () {
     return view('blog-grids',[
         'title' => 'My Blog'
@@ -87,17 +89,20 @@ Route::get('/blog-details', function () {
         'title' => 'Details Blog'
     ]);
 });
-Route::get('/not-found', function () {
-    return view('404',[
-        'title' => 'Not Found'
-    ]);
-});
+// Route::get('/not-found', function () {
+//     return view('404',[
+//         'title' => 'Not Found'
+//     ]);
+// });
 
 // Dashboard view
 
 Route::get('/dashboard',function(){
     return view('dashboard.index' , [
-        'judul' => 'Dashboard'
+        'judul' => 'Dashboard',
+        'jumlah_peminjam' => User::where('role', 'peminjam')->count(),
+        'jumlah_peminjaman' => Peminjaman::all()->count(),
+        'denda' => (Peminjaman::where('denda','>',0)->count())*1000
     ]);
 })->middleware('auth');
 Route::get('/dashboard/forms',function(){
@@ -124,7 +129,7 @@ Route::get('/dashboard/login',function(){
 
 // Katalog Buku
 
-Route::get('/katalog', [BukuController::class, 'katalog']);
+Route::get('/', [BukuController::class, 'katalog']);
 Route::post('/booking', [PeminjamanController::class, 'booking']);
 
 // Model Buku View
@@ -139,7 +144,7 @@ Route::resource('/dashboard/pustakawan', PustakawanController::class)->middlewar
 
 // Model Peminjam View
  
-Route::get('/dashboard/peminjam/laporan', [PeminjamController::class, 'laporan'])->middleware(['pustakawan']);
+Route::get('/dashboard/peminjam/laporan', [PeminjamController::class, 'laporan'])->middleware(['kepala']);
 Route::delete('/dashboard/peminjam/{user:id}', [PeminjamController::class, 'destroy'])->middleware(['pustakawan']);
 Route::resource('/dashboard/peminjam', PeminjamController::class)->middleware(['pustakawan']);
 

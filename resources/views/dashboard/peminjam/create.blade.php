@@ -2,11 +2,14 @@
 
 @section('container')
     <div class="card">
-      <header class="card-header">
+      <header class="card-header flex flex-row">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-lock"></i></span>
           Daftar Peminjam
         </p>
+        <a href="/dashboard/peminjam" class="mr-3 order-last button button-icon button-red mt-2 mb-3">
+          <i class="material-icons">arrow_back</i>
+        </a>
       </header>
       <div class="card-content">
         <form action="/dashboard/peminjam" method="post">

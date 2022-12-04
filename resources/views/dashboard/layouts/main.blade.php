@@ -7,7 +7,15 @@
         <section class="is-title-bar">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
                 <ul>
-                    <li>Admin</li>
+                    @can('kepala')
+                    <li>Kepala Perpustakaan</li>  
+                    @endcan
+                    @can('pustakawan')
+                    <li>Pustakawan</li>    
+                    @endcan
+                    @can('peminjam')
+                    <li>Peminjam</li>
+                    @endcan
                     <li>{{ $judul }}</li>
                 </ul>
             </div>
@@ -18,7 +26,7 @@
                 <h1 class="title">
                     {{ $judul }}
                 </h1>
-                <a href="/dashboard/buku" class="card-header-icon">
+                <a href="#" class="card-header-icon">
                     <span class="icon"><i class="mdi mdi-reload"></i></span>
                 </a>
             </div>

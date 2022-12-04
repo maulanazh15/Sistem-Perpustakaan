@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ asset('/css/style.css')}}">
        
     </head>
-    <body>
+    <body class="bg-primary">
         <!-- ======Section Start -->
     {{-- <section class=" py-14 lg:py-20">
         <div class="container mx-auto">

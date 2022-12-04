@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="bg-primary">
     <!-- ====== 404 Section Start -->
     {{-- <section class="bg-white py-14 lg:py-20">
         <div class="container">
@@ -40,7 +40,7 @@
     </section> --}}
     <!-- ====== 404 Section End -->
     <!-- ====== Error 404 Section Start -->
-    <section class="bg-primary relative z-10 py-[120px]">
+    <section class="relative z-10 py-[120px]">
         <div class="container mx-auto">
             <div class="-mx-4 flex">
                 <div class="w-full px-4">

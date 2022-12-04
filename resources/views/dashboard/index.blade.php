@@ -10,7 +10,7 @@
                 Jumlah Peminjam
               </h3>
               <h1>
-                512
+                {{ $jumlah_peminjam }}
               </h1>
             </div>
             <span class="icon widget-icon text-green-500"><i class="mdi mdi-account-multiple mdi-48px"></i></span>
@@ -25,10 +25,14 @@
                 Jumlah Denda
               </h3>
               <h1>
-                Rp777000
+                @if ($denda > 0)
+                    Rp{{ $denda }}
+                @else
+                    Rp0
+                @endif
               </h1>
             </div>
-            <span class="icon widget-icon text-blue-500"><i class="mdi mdi-cart-outline mdi-48px"></i></span>
+            <span class="icon widget-icon text-blue-500"><i class="mdi mdi-currency-usd mdi-48px"></i></span>
           </div>
         </div>
       </div>
@@ -41,7 +45,7 @@
                 Jumlah Peminjaman Buku
               </h3>
               <h1>
-                256
+                {{ $jumlah_peminjaman }}
               </h1>
             </div>
             <span class="icon widget-icon text-red-500"><i class="mdi mdi-finance mdi-48px"></i></span>

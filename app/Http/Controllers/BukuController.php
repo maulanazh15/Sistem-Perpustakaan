@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use App\Http\Requests\StoreBukuRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateBukuRequest;
 
 class BukuController extends Controller
@@ -17,7 +18,7 @@ class BukuController extends Controller
     public function katalog() {
         return view('katalog', [
             'title' => 'Katalog Buku',
-            'data_buku' => Buku::latest()->get()
+            'data_buku' => Buku::latest()->filter(request(['search']))->paginate(12)->withQueryString()
         ]);
     }
 
@@ -50,6 +51,9 @@ class BukuController extends Controller
     public function store(StoreBukuRequest $request)
     {   
         $validatedData = $request->validated();
+        if($request->file('foto_buku')){
+            $validatedData['foto_buku']  = $request->file('foto_buku')->store('foto-buku');
+        }
         if ($validatedData) {
             Buku::create($validatedData);
             return redirect('/dashboard/buku')->with('berhasil','Buku berhasil ditambahkan!');
@@ -91,6 +95,11 @@ class BukuController extends Controller
     public function update(UpdateBukuRequest $request, Buku $buku)
     {
         $validatedData = $request->validated();
+        if($request->file('foto_buku')){
+            if($request->oldImage){Storage::delete($buku->foto_buku);}
+            
+            $validatedData['foto_buku']  = $request->file('foto_buku')->store('foto-buku');
+        }
         if($validatedData) {
             Buku::where('id', $buku->id)->update($validatedData);
             return redirect('/dashboard/buku')->with('berhasil','Data Buku berhasil diubah!');

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        {{ $title }} | Free Tailwind CSS Template for Startup and SaaS By TailGrids
+        {{ $title }} | Siperpus
     </title>
     <link rel="shortcut icon" href="/images/logo/favicon.svg" type="image/x-icon" />
     <!-- Material Icons Link -->
@@ -31,10 +31,10 @@
 
 <body>
     @include('partials.navbar')
-    @if (!request()->is('/'))
+    {{-- @if (!request()->is('/'))
         @include('partials.banner')
-    @endif
-
+    @endif --}}
+    @include('partials.banner')
     @yield('container')
     @include('partials.footer')
 

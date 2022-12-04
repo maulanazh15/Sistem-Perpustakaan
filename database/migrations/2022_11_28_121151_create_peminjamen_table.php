@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('tanggal_peminjaman');
             $table->timestamp('tanggal_pengembalian');
             $table->string('status_peminjaman');
+            $table->integer('denda')->nullable();
             $table->timestamps();
         });
         // Schema::rename('peminjamen', 'peminjaman');
