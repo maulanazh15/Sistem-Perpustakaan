@@ -9,9 +9,10 @@ use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests\StorePeminjamanRequest;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
-use App\Http\Requests\UpdatePeminjamanRequest;
+
 
 class PeminjamanController extends Controller
 {
@@ -23,8 +24,12 @@ class PeminjamanController extends Controller
 
     public function laporan()
     {
+        if (!((auth()->user()->role === 'kepala') || (auth()->user()->role === 'pustakawan'))) {
+            abort(403);
+        }
+       
         $month = now()->month;
-        $data_peminjaman = Peminjaman::whereMonth('created_at', $month)->groupBy('day')
+        $data_peminjaman = Peminjaman::whereMonth('created_at', $month)->where('status_peminjaman','dipinjam')->groupBy('day')
         ->orderBy('day', 'ASC')
         ->get(array(
             DB::raw('DAY(created_at) as day'),
@@ -68,6 +73,11 @@ class PeminjamanController extends Controller
         Buku::where('id', $validatedData['buku_id'])->update(['status_buku'=>'book']);
         $validatedData['tanggal_peminjaman'] = now();
         $validatedData['tanggal_pengembalian'] = now()->addDays(7);
+        $jumlah_peminjaman_user = Peminjaman::where('user_id',auth()->user()->id)->whereDate('created_at',now()->toDateString())->count();
+        // dd($jumlah_peminjaman_user);
+        if(($jumlah_peminjaman_user > 2)) {
+            return redirect()->back()->with('gagal','Maksimal peminjaman hanya boleh sampai 3 kali dalam satu waktu!');
+        }
         Peminjaman::create($validatedData);
 
         return redirect()->back()->with('berhasil', 'Anda berhasil membooking buku');
@@ -77,7 +87,7 @@ class PeminjamanController extends Controller
     {
         return view('dashboard.peminjaman.index' ,[
             'judul' => 'Data Peminjaman Buku',
-            'data_peminjaman' =>  Peminjaman::where('status_peminjaman','book')->orWhere('status_peminjaman','dipinjam')->get(),
+            'data_peminjaman' =>  Peminjaman::latest()->where('status_peminjaman','book')->orWhere('status_peminjaman','dipinjam')->get(),
             'carbon' => Carbon::class
         ]);
     }

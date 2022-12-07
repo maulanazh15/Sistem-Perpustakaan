@@ -31,10 +31,10 @@
 
 <body>
     @include('partials.navbar')
-    {{-- @if (!request()->is('/'))
+    @if (!request()->is('/'))
         @include('partials.banner')
-    @endif --}}
-    @include('partials.banner')
+    @endif
+    {{-- @include('partials.banner') --}}
     @yield('container')
     @include('partials.footer')
 

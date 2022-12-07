@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreBukuRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateBukuRequest;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class BukuController extends Controller
 {
@@ -14,6 +16,30 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function laporan()
+    {
+        if (!((auth()->user()->role === 'kepala') || (auth()->user()->role === 'pustakawan'))) {
+            abort(403);
+        }
+       
+        $kategori_buku = Buku::groupby('kategori')->get('kategori');
+        $kategori_buku_count = Buku::groupby('kategori')->get(DB::raw('count(*) as total'));
+        $array_kategori = array();
+        $array_nKategori = array();
+        for ($i=0; $i < count($kategori_buku); $i++) { 
+            $array_kategori[$i] = $kategori_buku[$i]->kategori;
+            $array_nKategori[$i] = $kategori_buku_count[$i]->total;
+        }
+        $chart = (new LarapexChart)->barChart()
+        ->addData('Jumlah', $array_nKategori)
+        ->setXAxis($array_kategori)->setGrid();
+
+        return view('dashboard.buku.laporan', [
+            'judul' => 'Laporan Buku',
+            'chart' => $chart,
+            'data_buku' => Buku::latest()->paginate(10)
+        ]);
+    }
 
     public function katalog() {
         return view('katalog', [

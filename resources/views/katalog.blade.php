@@ -22,6 +22,9 @@
             @if (session()->has('berhasil'))
                 <div class="alert alert-gradient alert-green w-50">{{ session('berhasil') }}</div>
             @endif
+            @if (session()->has('gagal'))
+                <div class="alert alert-red w-full">{{ session('gagal') }}</div>
+            @endif
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 rounded-lg p-2">
                 @foreach ($data_buku as $buku)
                     <div class="card">
@@ -57,11 +60,108 @@
                             @else 
                                 <button class="chip chip-green" disabled>Tersedia</button>
                             @endif
-                            
+                            @guest
+                            <button class="button button-green order-last" dialog-trigger="true"
+                            id="pinjam">Detail Buku</button>
+                        <div class="dialog">
+                            <div class="dialog-overlay" dialog-close="true"></div>
+                            <div class="modal-dialog">
+                                <div class="dialog-content">
+                                    <div class="dialog-header">
+                                        <h6 class="mb-0 capitalize text-dark-500">
+                                            Detail Buku
+                                        </h6>
+                                        <button type="button" class="me-0 button-close" dialog-close="true"
+                                            aria-label="Close">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </div>
+                                    <div class="dialog-body">
+                                        <div class="py-3 text-center">
+                                            <h5 class="mt-2 text-red-500">{{ $buku->judul_buku }}</h5>
+                                            <div class="flex flex-col mb-2 border border-blue-gray-600 p-2 rounded-lg">
+                                                <img class="w-1/3 rounded-lg self-center mb-2" @if ($buku->foto_buku)
+                                                src="{{ asset('storage/' . $buku->foto_buku) }}"
+                                                @else
+                                                src="images/blog/cover.png"
+                                                @endif alt="card image"/>
+                                                <p>Penulis     : {{ $buku->penulis }}</p>
+                                                <p>Penerbit    : {{ $buku->penerbit }}</p>
+                                                <p>Tahun       : {{ $buku->tahun_terbit }}</p>
+                                                <p>Kategori    : {{ $buku->kategori }}</p>
+                                                <p>Jumlah Buku : {{ $buku->jumlah_buku }}</p>
+                                                <p>ISBN        : {{ $buku->isbn }}</p>
+                                            </div>
+                                            <p class="opacity-60">
+                                                Anda harus login terlebih dahulu jika ingin meminjam buku!
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="dialog-footer">
+                                        <button dialog-close="true"
+                                            class="button button-gradient button-deep-orange mb-0 mr-2">
+                                            Batal
+                                        </button>
+                                        <form action="/booking" method="post">
+                                            @csrf
+                                            <input type="hidden" name="buku_id" value="{{ $buku->id }}">
+                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                            <button type="submit" class="button button-gradient button-green mb-0">
+                                                Pinjam
+                                            </button>
+                                        </form>
+                                    </div> --}}
+                                </div>
+                            </div>   
+                    </div>
+                            @endguest
                             @auth
                                 @if ($buku->status_buku == 'book' || $buku->status_buku == 'dipinjam')
-                                {{-- <button class="button button-pink order-last" dialog-trigger="true"
-                                id="pinjam" disabled>Pinjam</button> --}}
+                                <button class="button button-green order-last" dialog-trigger="true"
+                                    id="pinjam">Detail Buku</button>
+                                <div class="dialog">
+                                    <div class="dialog-overlay" dialog-close="true"></div>
+                                    <div class="modal-dialog">
+                                        <div class="dialog-content">
+                                            <div class="dialog-header">
+                                                <h6 class="mb-0 capitalize text-dark-500">
+                                                    Peminjaman Buku
+                                                </h6>
+                                                <button type="button" class="me-0 button-close" dialog-close="true"
+                                                    aria-label="Close">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                            </div>
+                                            <div class="dialog-body">
+                                                <div class="py-3 text-center">
+                                                    <h5 class="mt-2 text-red-500">{{ $buku->judul_buku }}</h5>
+                                                    <div class="flex flex-col mb-2 border border-blue-gray-600 p-2 rounded-lg">
+                                                        <img class="w-1/3 rounded-lg self-center mb-2" @if ($buku->foto_buku)
+                                                        src="{{ asset('storage/' . $buku->foto_buku) }}"
+                                                        @else
+                                                        src="images/blog/cover.png"
+                                                        @endif alt="card image"/>
+                                                        <p>Penulis     : {{ $buku->penulis }}</p>
+                                                        <p>Penerbit    : {{ $buku->penerbit }}</p>
+                                                        <p>Tahun       : {{ $buku->tahun_terbit }}</p>
+                                                        <p>Kategori    : {{ $buku->kategori }}</p>
+                                                        <p>Jumlah Buku : {{ $buku->jumlah_buku }}</p>
+                                                        <p>ISBN        : {{ $buku->isbn }}</p>
+                                                    </div>
+                                                    <p class="opacity-60 text-red-400">
+                                                        Buku sedang dalam status {{ $buku->status_buku }}!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="dialog-footer">
+                                                <button dialog-close="true"
+                                                    class="button button-gradient button-deep-orange mb-0 mr-2">
+                                                    Kembali
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>   
+                            </div>
                                 @else
                                 <button class="button button-green order-last" dialog-trigger="true"
                                     id="pinjam">Pinjam</button>

@@ -28,7 +28,7 @@ class UserController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return back()->with('loginError','Login failed!');
+        return redirect()->back()->with('gagal','Login Gagal! Username atau Password yang dimasukkan mungkin salah');
     }
 
     public function logout(Request $request){

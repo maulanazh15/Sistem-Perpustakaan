@@ -13,6 +13,9 @@
               class="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-14 px-8 text-center sm:px-12 md:px-[60px]"
               data-wow-delay=".15s"
             >
+            @if (session()->has('gagal'))
+                <div class="alert alert-red w-full">{{ session('gagal') }}</div>
+            @endif
               <div class="mb-10 text-center">
                 <a
                   href="javascript:void(0)"
@@ -24,36 +27,34 @@
               <form action="/register" method="POST">
                 @csrf
                 <div class="mb-6">
-                  <input
-                    type="text"
-                    placeholder="Nama"
-                    name="name"
-                    class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
-                  />
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Nama</label>
+                    <input type="text" name="name" class="form-control" />
+                  </div>
                 </div>
                 <div class="mb-6">
-                  <input
-                    type="text"
-                    placeholder="Username"
-                    name="username"
-                    class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
-                  />
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" />
+                  </div>
                 </div>
                 <div class="mb-6">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
-                  />
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" />
+                  </div>
                 </div>
                 <div class="mb-6">
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
-                  />
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" />
+                  </div>
+                </div>
+                <div class="mb-6">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Konfirmasi Password</label>
+                    <input type="password" name="password_confirmation" class="form-control" />
+                  </div>
                 </div>
                 <div class="mb-10">
                   <input
@@ -372,6 +373,6 @@
       </div>
     </section>
     <!-- ====== Forms Section End -->
-
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/input.js"></script>
 @endsection
 

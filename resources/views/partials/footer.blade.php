@@ -12,14 +12,13 @@ data-wow-delay=".15s"
           class="mb-6 inline-block max-w-[160px]"
         >
           <img
-            src="images/logo/logo-white.svg"
+            src="images/logo/siperpus-logo-white.svg"
             alt="logo"
             class="max-w-full"
           />
         </a>
         <p class="mb-7 text-base text-[#f3f4fe]">
-          We create digital experiences for brands and companies by using
-          technology.
+          SIPERPUS atau Sistem Informasi Perpustakaan merupakan sistem perpustakaan berbasis web.
         </p>
         <div class="-mx-3 flex items-center">
           <a
@@ -100,7 +99,7 @@ data-wow-delay=".15s"
               href="javascript:void(0)"
               class="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
             >
-              Home
+              Katalog Buku
             </a>
           </li>
           <li>
@@ -132,14 +131,14 @@ data-wow-delay=".15s"
     </div>
     <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
       <div class="mb-10 w-full">
-        <h4 class="mb-9 text-lg font-semibold text-white">Features</h4>
+        <h4 class="mb-9 text-lg font-semibold text-white">Fitur</h4>
         <ul>
           <li>
             <a
               href="javascript:void(0)"
               class="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
             >
-              How it works
+              Peminjaman
             </a>
           </li>
           <li>
@@ -147,29 +146,29 @@ data-wow-delay=".15s"
               href="javascript:void(0)"
               class="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
             >
-              Privacy policy
+              Pengembalian
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a
               href="javascript:void(0)"
               class="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
             >
               Terms of Service
             </a>
-          </li>
-          <li>
+          </li> --}}
+          {{-- <li>
             <a
               href="javascript:void(0)"
               class="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
             >
               Refund policy
             </a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>
-    <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
+    {{-- <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
       <div class="mb-10 w-full">
         <h4 class="mb-9 text-lg font-semibold text-white">
           Our Products
@@ -209,8 +208,8 @@ data-wow-delay=".15s"
           </li>
         </ul>
       </div>
-    </div>
-    <div class="w-full px-4 md:w-2/3 lg:w-6/12 xl:w-3/12">
+    </div> --}}
+    {{-- <div class="w-full px-4 md:w-2/3 lg:w-6/12 xl:w-3/12">
       <div class="mb-10 w-full">
         <h4 class="mb-9 text-lg font-semibold text-white">Partners</h4>
         <ul class="flex flex-wrap items-center">
@@ -294,7 +293,7 @@ data-wow-delay=".15s"
           </li>
         </ul>
       </div>
-    </div>
+    </div> --}}
   </div>
 </div>
 

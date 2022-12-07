@@ -28,14 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useTailwind();
 
-        Gate::define('kepala', function(User $user){
-            return $user->role === 'kepala';
-        });
-        Gate::define('pustakawan', function(User $user){
-            return $user->role === 'pustakawan';
-        });
-        Gate::define('peminjam', function(User $user){
-            return $user->role === 'peminjam';
-        });
+        
     }
 }

@@ -13,7 +13,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'username' => ['required','min:3','max:255','unique:users'],
             'email' => 'required|email:dns|unique:users',
-            'password' => ['required', Password::min(8)], // Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()]
+            'password' => ['required','confirmed', Password::min(8)], // Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()]
         ]);
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
@@ -24,6 +24,6 @@ class RegisterController extends Controller
         User::create($validatedData);
 
         // $request->session()->flash('success','Registration successful! Please login!')
-        return redirect('/login')->with('success','Registration successful! Please login!');
+        return redirect('/login')->with('berhasil','Registrasi berhasil! Silahkan login dengan akun yang telah dibuat!');
     }
 }

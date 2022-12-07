@@ -18,6 +18,9 @@ class PeminjamController extends Controller
 
     public function laporan()
     {
+        if (!((auth()->user()->role === 'kepala') || (auth()->user()->role === 'pustakawan'))) {
+            abort(403);
+        }
         $month = now()->month;
         $data_peminjam = User::where('role','peminjam')->whereMonth('created_at', $month)->groupBy('day')
         ->orderBy('day', 'ASC')

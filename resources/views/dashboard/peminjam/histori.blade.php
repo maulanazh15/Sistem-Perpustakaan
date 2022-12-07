@@ -64,14 +64,14 @@
               </td> --}}
                                 {{-- <td data-label="Name">{{ $peminjaman->id }}</td> --}}
                                 {{-- <td data-label="Company">{{ $peminjaman->user->name }}</td> --}}
-                                <td data-label="City">{{ $peminjaman->buku->judul_buku }}</td>
-                                <td data-label="City">{{ $carbon::parse($peminjaman->tanggal_peminjaman)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}</td>
-                                <td data-label="City">{{ $carbon::parse($peminjaman->tanggal_pengembalian)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}</td>
+                                <td data-label="Judul Buku">{{ $peminjaman->buku->judul_buku }}</td>
+                                <td data-label="Tanggal Peminjaman">{{ $carbon::parse($peminjaman->tanggal_peminjaman)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}</td>
+                                <td data-label="Tanggal Pengembalian">{{ $carbon::parse($peminjaman->tanggal_pengembalian)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}</td>
                                 {{-- <td data-label="Created">
                                     <small class="text-gray-500"
                                         title="Oct 25, 2021">{{ $peminjaman->created_at->diffForHumans() }}</small>
                                 </td> --}}
-                                <td data-label="City"><button
+                                <td data-label="Status"><button
                                         class="chip @if ($peminjaman->status_peminjaman == 'dipinjam') {{ 'chip-pink' }} @elseif($peminjaman->status_peminjaman == 'book') {{ 'chip-orange' }} @else {{'chip-green'}} @endif"
                                         disabled>{{ $peminjaman->status_peminjaman }}</button></td>
                                 {{-- <td data-label="Progress" class="progress-cell">
@@ -82,7 +82,7 @@
         @endforeach
         </tbody>
         </table>
-        <div class="table-pagination">
+        {{-- <div class="table-pagination">
             <div class="flex items-center justify-between">
                 <div class="buttons">
                     <button type="button" class="button active">1</button>
@@ -91,7 +91,7 @@
                 </div>
                 <small>Page 1 of 3</small>
             </div>
-        </div>
+        </div> --}}
         @endif
 
     </div>

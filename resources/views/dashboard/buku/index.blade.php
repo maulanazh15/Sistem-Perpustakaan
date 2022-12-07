@@ -62,15 +62,15 @@
                   <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full">
                 </div>
               </td> --}}
-                                <td data-label="Name">{{ $buku->judul_buku }}</td>
-                                <td data-label="Company">{{ $buku->penulis }}</td>
-                                <td data-label="City">{{ $buku->kategori }}</td>
-                                <td data-label="City">{{ $buku->jumlah_buku }}</td>
-                                <td data-label="Created">
+                                <td data-label="Judul Buku">{{ $buku->judul_buku }}</td>
+                                <td data-label="Penulis">{{ $buku->penulis }}</td>
+                                <td data-label="Kategori">{{ $buku->kategori }}</td>
+                                <td data-label="Jumlah Buku">{{ $buku->jumlah_buku }}</td>
+                                <td data-label="Tanggal Masuk">
                                     <small class="text-gray-500"
                                         title="Oct 25, 2021">{{ $buku->created_at->diffForHumans() }}</small>
                                 </td>
-                                <td data-label="City"><button class="chip  @if($buku->status_buku == 'dipinjam') {{'chip-pink'}} @elseif($buku->status_buku == 'book'){{'chip-orange'}} @else {{'chip-green'}} @endif">{{ $buku->status_buku }}</button></td>
+                                <td data-label="Status Buku"><button class="chip  @if($buku->status_buku == 'dipinjam') {{'chip-pink'}} @elseif($buku->status_buku == 'book'){{'chip-orange'}} @else {{'chip-green'}} @endif">{{ $buku->status_buku }}</button></td>
                                 {{-- <td data-label="Progress" class="progress-cell">
                 <progress max="100" value="79">79</progress>
               </td> --}}

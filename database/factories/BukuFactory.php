@@ -16,14 +16,16 @@ class BukuFactory extends Factory
      */
     public function definition()
     {
+        $kategori = array("Novel", "Majalah","Kamus","Komik","Manga","Ensiklopedia","Biografi","Naskah","Light Novel");
+        $randomInt = random_int(0,count($kategori)-1); 
         return [
             'judul_buku' => fake()->sentence(3),
             'penulis' => fake()->name(),
-            'kategori' => fake()->sentence(1),
+            'kategori' => $kategori[$randomInt],
             'penerbit' => fake()->sentence(1),
             'tahun_terbit' => fake()->numberBetween(1990, 2022),
             'isbn' => fake()->uuid(),
-            'jumlah_buku' => fake()->randomDigit(),
+            'jumlah_buku' => 1,
             'status_buku' => 'tersedia'
         ];
     }

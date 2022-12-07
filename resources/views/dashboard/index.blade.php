@@ -1,6 +1,60 @@
 @extends('dashboard.layouts.main')
 {{-- index.blade.php --}}
 @section('container')
+    @can('peminjam')
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Peminjaman Buku yang pernah dilakukan
+              </h3>
+              <h1>
+                {{ $jumlah_peminjaman }}
+              </h1>
+            </div>
+            <span class="icon widget-icon text-green-500"><i class="mdi mdi-book mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Denda Anda
+              </h3>
+              <h1>
+                @if ($denda > 0)
+                    Rp{{ $denda }}
+                @else
+                    Rp0
+                @endif
+              </h1>
+            </div>
+            <span class="icon widget-icon text-blue-500"><i class="mdi mdi-currency-usd mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+      {{-- <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Buku yang pernah dipinjam
+              </h3>
+              <h1>
+                {{ $jumlah_buku }}
+              </h1>
+            </div>
+            <span class="icon widget-icon text-red-500"><i class="mdi mdi-book mdi-48px"></i></span>
+          </div>
+        </div>
+      </div> --}}
+    </div>
+    @endcan
+    @can('pustakawan')
     <div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
       <div class="card">
         <div class="card-content">
@@ -14,6 +68,21 @@
               </h1>
             </div>
             <span class="icon widget-icon text-green-500"><i class="mdi mdi-account-multiple mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Buku
+              </h3>
+              <h1>
+                {{ $jumlah_buku }}
+              </h1>
+            </div>
+            <span class="icon widget-icon text-blue-500"><i class="mdi mdi-book mdi-48px"></i></span>
           </div>
         </div>
       </div>
@@ -53,12 +122,98 @@
         </div>
       </div>
     </div>
+    @endcan
+    @can('kepala')
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Pustakawan
+              </h3>
+              <h1>
+                {{ $jumlah_pustakawan }}
+              </h1>
+            </div>
+            <span class="icon widget-icon text-teal-500"><i class="mdi mdi-account mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Peminjam
+              </h3>
+              <h1>
+                {{ $jumlah_peminjam }}
+              </h1>
+            </div>
+            <span class="icon widget-icon text-green-500"><i class="mdi mdi-account-multiple mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Buku
+              </h3>
+              <h1>
+                {{ $jumlah_buku }}
+              </h1>
+            </div>
+            <span class="icon widget-icon text-blue-500"><i class="mdi mdi-book mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Denda
+              </h3>
+              <h1>
+                @if ($denda > 0)
+                    Rp{{ $denda }}
+                @else
+                    Rp0
+                @endif
+              </h1>
+            </div>
+            <span class="icon widget-icon text-blue-500"><i class="mdi mdi-currency-usd mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-content">
+          <div class="flex items-center justify-between">
+            <div class="widget-label">
+              <h3>
+                Jumlah Peminjaman Buku
+              </h3>
+              <h1>
+                {{ $jumlah_peminjaman }}
+              </h1>
+            </div>
+            <span class="icon widget-icon text-red-500"><i class="mdi mdi-finance mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endcan
+    
 
     <div class="card mb-6">
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-finance"></i></span>
-          Jumlah Peminjam dan Peminjaman Buku Dalam Waktu Sebulan
+          Jumlah Peminjaman Buku Hari Ini
         </p>
         <a href="#" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
@@ -67,328 +222,241 @@
       <div class="card-content">
         <div class="chart-area">
           <div class="h-full">
-            <div class="chartjs-size-monitor">
-              <div class="chartjs-size-monitor-expand">
-                <div></div>
-              </div>
-              <div class="chartjs-size-monitor-shrink">
-                <div></div>
-              </div>
-            </div>
-            <canvas id="big-line-chart" width="2992" height="1000" class="chartjs-render-monitor block" style="height: 400px; width: 1197px;"></canvas>
+            {!! $chart->container() !!}
+           
           </div>
         </div>
       </div>
     </div>
-
-    <div class="notification blue">
-      <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
-        <div>
-          <span class="icon"><i class="mdi mdi-buffer"></i></span>
-          <b>Responsive table</b>
+    @can('kepala')
+    <div class="card has-table">
+      <header class="card-header">
+        <p class="card-header-title">
+          <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+         Pustakawan
+        </p>
+        {{-- <a href="/dashboard/pustakawan/create" class="button button-green my-3 mr-3 flex items-center" data-ripple-light="true">
+         <i class="material-icons -ml-3">add</i> Daftar Pustakawan 
+        </a> --}}
+      </header>
+      <div class="card-content">
+        @if ($data_pustakawan->isEmpty())
+        <div class="card empty">
+            <div class="card-content">
+              <div>
+                <span class="icon large"><i class="mdi mdi-emoticon-sad mdi-48px"></i></span>
+              </div>
+              <p>Data Pustakawan Kosong</p>
+            </div>
+          </div>
+        @else
+        <table>
+            <thead>
+            <tr>
+              <th>
+                #
+              </th>
+              {{-- <th class="checkbox-cell">
+                <label class="checkbox">
+                  <input type="checkbox">
+                  <span class="check"></span>
+                </label>
+              </th> --}}
+              {{-- <th class="image-cell"></th> --}}
+              <th>Nama</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Status</th>
+              {{-- <th>Bergabung</th>
+              {{-- <th>Progress</th>
+              <th>Aksi</th> --}}
+            </tr>
+            </thead>
+            <tbody>
+              @foreach ($data_pustakawan as $pustakawan)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                {{-- <td class="checkbox-cell">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    <span class="check"></span>
+                  </label>
+                </td> --}}
+                {{-- <td class="image-cell">
+                  <div class="image">
+                    <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full">
+                  </div>
+                </td> --}}
+                <td data-label="Nama">{{ $pustakawan->name }}</td>
+                <td data-label="Username">{{ $pustakawan->username}}</td>
+                <td data-label="Email">{{ $pustakawan->email }}</td>
+                <td data-label="Status">
+                  @if ($pustakawan->isAktif)
+                  <button class="chip chip-green">Online</button></td>
+                  @else
+                  <button class="chip chip-red">Offline</button></td>  
+                  @endif
+                  
+                {{-- <td data-label="Created">
+                  <small class="text-gray-500" title="Oct 25, 2021">{{ $pustakawan->created_at->diffForHumans() }}</small>
+                </td> --}}
+                {{-- <td data-label="Progress" class="progress-cell">
+                  <progress max="100" value="79">79</progress>
+                </td> --}}
+                {{-- <td class="actions-cell">
+                  <div class="flex flex-row">
+                    {{-- <a href="/dashboard/buku/{{ $buku->id }}" class="button button-icon button-blue mr-2" data-ripple-light="true">
+                      <i class="material-icons">visibility</i>
+                    </a> 
+                    <a href="/dashboard/pustakawan/{{ $pustakawan->id }}/edit" class="button button-icon button-orange mr-2" data-ripple-light="true">
+                      <i class="material-icons">edit</i>
+                    </a>
+                    <button class="button button-icon button-red" dialog-trigger="true" data-ripple-light="true">
+                      <i class="material-icons">delete</i>
+                    </button>
+                    <div class="dialog">
+                      <div class="dialog-overlay" dialog-close="true"></div>
+                      <div class="modal-dialog">
+                        <div class="dialog-content">
+                          <div class="dialog-header">
+                            <h6 class="mb-0">Hapus Pustakawan</h6>
+                            <button
+                              type="button"
+                              class="me-0 button-close"
+                              dialog-close="true"
+                              aria-label="Close"
+                            >
+                              <i class="material-icons">close</i>
+                            </button>
+                          </div>
+                          <div class="dialog-body">
+                            <p class="opacity-60">
+                             Apakah Anda Yakin ingin menghapus data pustakawan ini?
+                            </p>
+                          </div>
+                          <div class="dialog-footer">
+                            <button
+                              class="button button-gradient button-blue mr-3 mb-0"
+                              dialog-close="true"
+                            >
+                              Tidak
+                            </button>
+                            <form action="{{ route('pustakawan.destroy', $pustakawan->id) }}" class="ml-1" method="post">
+                              @method('delete')
+                              @csrf
+                              <button class="button button-gradient button-red" dialog-trigger="true" data-ripple-light="true">
+                                Ya
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td> --}}
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+          <div class="table-pagination">
+            <div class="flex flex-row-reverse items-center justify-between">
+                {{ $data_pustakawan->links() }}
+            </div>
         </div>
-        <button type="button" class="button small textual --jb-notification-dismiss">Dismiss</button>
+        @endif
+       
       </div>
     </div>
-
+    @endcan
+    @can('pustakawan')
     <div class="card has-table">
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
           Peminjam
         </p>
-        <a href="#" class="card-header-icon">
-          <span class="icon"><i class="mdi mdi-reload"></i></span>
-        </a>
       </header>
       <div class="card-content">
-        <table>
-          <thead>
-          <tr>
-            <th></th>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>Kota</th>
-            <th>Progress</th>
-            <th>Tanggal dibuat</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full">
+        @if ($data_peminjam->isEmpty())
+        <div class="card empty">
+            <div class="card-content">
+              <div>
+                <span class="icon large"><i class="mdi mdi-emoticon-sad mdi-48px"></i></span>
               </div>
-            </td>
-            <td data-label="Name">Rebecca Bauch</td>
-            <td data-label="Company">Daugherty-Daniel</td>
-            <td data-label="City">South Cory</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="79">79</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Oct 25, 2021">Oct 25, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/felicita-yundt.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Felicita Yundt</td>
-            <td data-label="Company">Johns-Weissnat</td>
-            <td data-label="City">East Ariel</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="67">67</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Jan 8, 2021">Jan 8, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/mr-larry-satterfield-v.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Mr. Larry Satterfield V</td>
-            <td data-label="Company">Hyatt Ltd</td>
-            <td data-label="City">Windlerburgh</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="16">16</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Dec 18, 2021">Dec 18, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/mr-broderick-kub.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Mr. Broderick Kub</td>
-            <td data-label="Company">Kshlerin, Bauch and Ernser</td>
-            <td data-label="City">New Kirstenport</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="71">71</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Sep 13, 2021">Sep 13, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/barry-weber.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Barry Weber</td>
-            <td data-label="Company">Schulist, Mosciski and Heidenreich</td>
-            <td data-label="City">East Violettestad</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="80">80</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Jul 24, 2021">Jul 24, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/bert-kautzer-md.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Bert Kautzer MD</td>
-            <td data-label="Company">Gerhold and Sons</td>
-            <td data-label="City">Mayeport</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="62">62</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Mar 30, 2021">Mar 30, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/lonzo-steuber.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Lonzo Steuber</td>
-            <td data-label="Company">Skiles Ltd</td>
-            <td data-label="City">Marilouville</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="17">17</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Feb 12, 2021">Feb 12, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/jonathon-hahn.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Jonathon Hahn</td>
-            <td data-label="Company">Flatley Ltd</td>
-            <td data-label="City">Billiemouth</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="74">74</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Dec 30, 2021">Dec 30, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/ryley-wuckert.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Ryley Wuckert</td>
-            <td data-label="Company">Heller-Little</td>
-            <td data-label="City">Emeraldtown</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="54">54</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Jun 28, 2021">Jun 28, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="image-cell">
-              <div class="image">
-                <img src="https://avatars.dicebear.com/v2/initials/sienna-hayes.svg" class="rounded-full">
-              </div>
-            </td>
-            <td data-label="Name">Sienna Hayes</td>
-            <td data-label="Company">Conn, Jerde and Douglas</td>
-            <td data-label="City">Jonathanfort</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="55">55</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Mar 7, 2021">Mar 7, 2021</small>
-            </td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <div class="table-pagination">
-          <div class="flex items-center justify-between">
-            <div class="buttons">
-              <button type="button" class="button active">1</button>
-              <button type="button" class="button">2</button>
-              <button type="button" class="button">3</button>
+              <p>Data Peminjam Kosong</p>
             </div>
-            <small>Page 1 of 3</small>
           </div>
+        @else
+        <table>
+            <thead>
+            <tr>
+              <th>
+                #
+              </th>
+              {{-- <th class="checkbox-cell">
+                <label class="checkbox">
+                  <input type="checkbox">
+                  <span class="check"></span>
+                </label>
+              </th> --}}
+              {{-- <th class="image-cell"></th> --}}
+              <th>Nama</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Status</th>
+              {{-- <th>Bergabung</th> --}}
+              {{-- <th>Progress</th> --}}
+              {{-- <th>Aksi</th> --}}
+            </tr>
+            </thead>
+            <tbody>
+              @foreach ($data_peminjam as $peminjam)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                {{-- <td class="checkbox-cell">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    <span class="check"></span>
+                  </label>
+                </td> --}}
+                {{-- <td class="image-cell">
+                  <div class="image">
+                    <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full">
+                  </div>
+                </td> --}}
+                <td data-label="Nama">{{ $peminjam->name }}</td>
+                <td data-label="Username">{{ $peminjam->username}}</td>
+                <td data-label="Email">{{ $peminjam->email }}</td>
+                <td data-label="Status">
+                  @if ($peminjam->isAktif)
+                  <button class="chip chip-green">Online</button></td>
+                  @else
+                  <button class="chip chip-red">Offline</button></td>  
+                  @endif
+                  
+                {{-- <td data-label="Created">
+                  <small class="text-gray-500" title="Oct 25, 2021">{{ $peminjam->created_at->diffForHumans() }}</small>
+                </td> --}}
+                {{-- <td data-label="Progress" class="progress-cell">
+                  <progress max="100" value="79">79</progress>
+                </td> --}}
+
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+          <div class="table-pagination">
+            <div class="flex flex-row-reverse items-center justify-between">
+                {{ $data_peminjam->links() }}
+            </div>
         </div>
+        @endif
+       
       </div>
-    </div>
-  
+    </div>  
+    @endcan
+    <script src="{{ $chart->cdn() }}"></script>
+
+    {{ $chart->script() }}
 @endsection
 

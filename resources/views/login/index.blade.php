@@ -6,10 +6,17 @@
           <div class="container">
             <div class="-mx-4 flex flex-wrap">
               <div class="w-full px-4">
+                
                 <div
                   class="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-14 px-8 text-center sm:px-12 md:px-[60px]"
                   data-wow-delay=".15s"
                 >
+                @if (session()->has('berhasil'))
+                <div class="alert alert-green w-full">{{ session('berhasil') }}</div>
+            @endif
+                @if (session()->has('gagal'))
+                <div class="alert alert-red w-full">{{ session('gagal') }}</div>
+            @endif
                   <div class="mb-10 text-center">
                     <a
                       href="javascript:void(0)"
@@ -21,20 +28,29 @@
                   <form action="/login" method="post">
                     @csrf
                     <div class="mb-6">
-                      <input
+                      <div class="input-group input-group-dynamic">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" />
+                      </div>
+                      
+                      {{-- <input
                         type="email"
                         placeholder="Email"
                         name="email"
                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
-                      />
+                      /> --}}
                     </div>
                     <div class="mb-6">
-                      <input
+                      <div class="input-group input-group-dynamic">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" />
+                      </div>
+                      {{-- <input
                         type="password"
                         name="password"
                         placeholder="Password"
                         class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none transition focus:border-primary focus-visible:shadow-none"
-                      />
+                      /> --}}
                     </div>
                     <div class="mb-10">
                       <input
@@ -341,6 +357,7 @@
           </div>
         </section>
         <!-- ====== Forms Section End -->
+        <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/input.js"></script>
 @endsection
 
 

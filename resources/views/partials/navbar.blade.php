@@ -18,14 +18,14 @@
                     <nav id="navbarCollapse"
                         class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
                         <ul class="lg:flex">
-                            {{-- <li class="group relative">
+                            <li class="group relative">
                                     <a href="/"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70">
-                                    Home
+                                    Beranda
                                 </a>
-                            </li> --}}
+                            </li>
                             <li class="group relative">
-                                <a href="/"
+                                <a href="/katalog"
                                     class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:font-extrabold lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
                                     Katalog Buku
                                 </a>

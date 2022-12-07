@@ -62,20 +62,20 @@
                   <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full">
                 </div>
               </td> --}}
-                                <td data-label="Name">{{ $peminjaman->id }}</td>
-                                <td data-label="Company">{{ $peminjaman->user->name }}</td>
-                                <td data-label="City">{{ $peminjaman->buku->judul_buku }}</td>
-                                <td data-label="City">
+                                <td data-label="Kode Peminjaman">{{ $peminjaman->id }}</td>
+                                <td data-label="Username">{{ $peminjaman->user->name }}</td>
+                                <td data-label="Judul Buku">{{ $peminjaman->buku->judul_buku }}</td>
+                                <td data-label="Tanggal Peminjaman">
                                     {{ $carbon::parse($peminjaman->tanggal_peminjaman)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}
                                 </td>
-                                <td data-label="City">
+                                <td data-label="Tanggal Pengembalian">
                                     {{ $carbon::parse($peminjaman->tanggal_pengembalian)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, j F Y') }}
                                 </td>
                                 {{-- <td data-label="Created">
                                     <small class="text-gray-500"
                                         title="Oct 25, 2021">{{ $peminjaman->created_at->diffForHumans() }}</small>
                                 </td> --}}
-                                <td data-label="City">
+                                <td data-label="Status">
                                     @if ($peminjaman->status_peminjaman == 'dipinjam')
                                         <button class="chip chip-pink"
                                             disabled>{{ $peminjaman->status_peminjaman }}</button>
