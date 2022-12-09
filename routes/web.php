@@ -106,11 +106,8 @@ Route::get('/dashboard/forms',function(){
         'judul' => 'Form'
     ]);
 });
-Route::get('/dashboard/profile',function(){
-    return view('dashboard.profile', [
-        'judul' => 'Profil'
-    ]);
-});
+Route::get('/dashboard/profile',[UserController::class, 'editdatadiri']);
+Route::post('/dashboard/profile/update',[UserController::class, 'updatedata']);
 Route::get('/dashboard/tables',function(){
     return view('dashboard.tables', [
         'judul' => 'Tabel'

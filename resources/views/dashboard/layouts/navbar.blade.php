@@ -16,14 +16,17 @@
         <div class="navbar-end">
             <div class="navbar-item dropdown has-divider has-user-avatar">
                 <a class="navbar-link">
-                    <div class="user-avatar">
-                        <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe"
-                            class="rounded-full">
+                    <div class="avatar avatar-circular">
+                        @if (auth()->user()->foto_profil)
+                  <img src="{{asset('storage/'.auth()->user()->foto_profil)}}" alt="John Doe"> 
+                  @else
+                  <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe" class="rounded-full">
+                  @endif
                     </div>
-                    <div class="is-user-name"><span>John Doe</span></div>
-                    <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
+                    <div class="ml-3 is-user-name"><span>{{ auth()->user()->name }}</span></div>
+                    {{-- <span class="icon"><i class="mdi mdi-chevron-down"></i></span> --}}
                 </a>
-                <div class="navbar-dropdown">
+                {{-- <div class="navbar-dropdown">
                     <a href="/profile" class="navbar-item">
                         <span class="icon"><i class="mdi mdi-account"></i></span>
                         <span>My Profile</span>
@@ -37,7 +40,7 @@
                         <span>Messages</span>
                     </a>
                     <hr class="navbar-divider">
-                </div>
+                </div> --}}
             </div>
             <form action="/logout" method="post" class="navbar-item desktop-icon-only">
                     @csrf

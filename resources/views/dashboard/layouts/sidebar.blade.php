@@ -16,6 +16,12 @@
                     <span class="menu-item-label">Dashboard</span>
                 </a>
             </li>
+            <li class="{{ Request::is('dashboard/profile') ? 'active' : '' }}">
+                <a href="/dashboard/profile">
+                    <span class="icon"><i class="mdi mdi-account-circle"></i></span>
+                    <span class="menu-item-label">Profil</span>
+                </a>
+            </li>
         </ul>
         @can('kepala')
         <p class="menu-label">Kepala</p>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -135,7 +136,9 @@ class PeminjamController extends Controller
      */
     public function destroy(User $user)
     {
+        // Peminjaman::where('user_id',$user->id)->delete();
         User::destroy($user->id);
+        
         // dd($user->id);
         return redirect('/dashboard/peminjam')->with('berhasil','Peminjam berhasil dihapus!');
 

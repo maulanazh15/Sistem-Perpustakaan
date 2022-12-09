@@ -39,4 +39,31 @@ class UserController extends Controller
 
         return redirect('/login');
     }
+
+    public function editdatadiri()
+    {
+        // dd(User::where('id',auth()->user()->id)->get()[0]);
+        return view('dashboard.profile', [
+            'judul' => 'Profil',
+            'data_diri' => User::where('id',auth()->user()->id)->get()[0]
+        ]);
+    }
+
+    public function updatedata(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name'=> 'required',
+            'username'=> 'required',
+            'email' => 'required',
+            'foto_profil' => 'image|file|max:4000'
+        ]);
+
+        if($request->file('foto_profil')){
+            $validatedData['foto_profil']  = $request->file('foto_profil')->store('foto-profil');
+        }
+
+        User::where('id',auth()->user()->id)->update($validatedData);
+
+        return redirect()->back()->with('berhasil','Berhasil mengedit data profil!');
+    }
 }
