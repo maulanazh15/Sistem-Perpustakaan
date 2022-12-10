@@ -18,7 +18,7 @@ class Buku extends Model
         $query->when($filters['search'] ?? false, function($query, $search) {
             return $query->where(function($query) use ($search) {
                 $query->where('judul_buku','like','%'.$search.'%')
-                ->orWhere('penulis','like','%'.$search.'%');
+                ->orWhere('kategori','like','%'.$search.'%');
             });
         });
     }

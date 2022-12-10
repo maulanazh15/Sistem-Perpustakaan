@@ -4,10 +4,10 @@
     <!-- ====== Blog Section Start -->
     <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 bg-gradient-to-r from-cyan-500 to-blue-500">
         <div class="container">
-            <form action="/">
+            <form action="/katalog">
                 <div class="flex items-center justify-center mb-4">
                     <div class="flex border-2 rounded">
-                        <input name="search" type="text" class="px-4 py-2 w-80" placeholder="Cari judul buku">
+                        <input name="search" type="text" class="px-4 py-2 w-80" placeholder="Cari judul buku atau kategori buku">
                         <button type="submit" class="flex items-center justify-center px-4 border-l">
                             <svg class="w-6 h-6 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24">

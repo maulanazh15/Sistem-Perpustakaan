@@ -1660,16 +1660,14 @@
                   </div>
                   <div class="w-full">
                     <h4 class="text-base font-semibold text-black sm:text-lg">
-                      How to use TailGrids?
+                      Bagaimana cara peminjaman buku pada aplikasi Siperpus?
                     </h4>
                   </div>
                 </button>
                 <div class="faq-content hidden pl-[62px]">
                   <p class="py-3 text-base leading-relaxed text-body-color">
-                    It takes 2-3 weeks to get your first blog post ready. That
-                    includes the in-depth research & creation of your monthly
-                    content marketing strategy that we do before writing your
-                    first blog post, Ipsum available .
+                    Para peminjam harus terlebih dahulu mendaftar akun siperpus pada halaman registrasi. Jika sudah mempunyai akun
+                    siperpus, peminjam bisa langsung login dan menuju ke halaman katalog buku untuk memilih buku yang akan dipinjam. 
                   </p>
                 </div>
               </div>
@@ -1697,16 +1695,15 @@
                   </div>
                   <div class="w-full">
                     <h4 class="text-base font-semibold text-black sm:text-lg">
-                      How to download icons from LineIcons?
+                      Kenapa status peminjaman masih  'booked' pada halaman histori peminjaman saya?
                     </h4>
                   </div>
                 </button>
                 <div class="faq-content hidden pl-[62px]">
                   <p class="py-3 text-base leading-relaxed text-body-color">
-                    It takes 2-3 weeks to get your first blog post ready. That
-                    includes the in-depth research & creation of your monthly
-                    content marketing strategy that we do before writing your
-                    first blog post, Ipsum available .
+                    Status peminjaman terdiri dari tiga tahapan yaitu, book, peminjaman akan otomatis akan berada dalam status ini ketika terjadi peminjaman suatu buku. Peminjam harus
+                    menunggu terlebih dahulu persetujuan peminjaman dari pustakawan untuk bisa masuk ke tahapan selanjutnya yaitu, dipinjam. Apabila peminjaman buku disetujui oleh pustakawan
+                    maka status peminjaman akan otomatis berubah dari 'book' menjadi 'dipinjam'. Itu artinya peminjaman buku berhasil dilakukan.
                   </p>
                 </div>
               </div>
@@ -1734,16 +1731,13 @@
                   </div>
                   <div class="w-full">
                     <h4 class="text-base font-semibold text-black sm:text-lg">
-                      Is GrayGrids part of UIdeck?
+                      Apa saja informasi yang disediakan pada halaman dashboard peminjam buku?
                     </h4>
                   </div>
                 </button>
                 <div class="faq-content hidden pl-[62px]">
                   <p class="py-3 text-base leading-relaxed text-body-color">
-                    It takes 2-3 weeks to get your first blog post ready. That
-                    includes the in-depth research & creation of your monthly
-                    content marketing strategy that we do before writing your
-                    first blog post, Ipsum available .
+                    Informasi yang ada pada dashboard peminjam buku yaitu jumlah peminjaman yang pernah dilakukan oleh peminjam dan jumlah seluruh denda yang pernah dikenakan kepada peminjam karena terlambat dalam pengembalian buku. 
                   </p>
                 </div>
               </div>
@@ -1773,16 +1767,13 @@
                   </div>
                   <div class="w-full">
                     <h4 class="text-base font-semibold text-black sm:text-lg">
-                      Can I use this template for commercial project?
+                      Berapakah durasi maksimal peminjaman buku?
                     </h4>
                   </div>
                 </button>
                 <div class="faq-content hidden pl-[62px]">
                   <p class="py-3 text-base leading-relaxed text-body-color">
-                    It takes 2-3 weeks to get your first blog post ready. That
-                    includes the in-depth research & creation of your monthly
-                    content marketing strategy that we do before writing your
-                    first blog post, Ipsum available .
+                    Durasi maksimal pada satu kali peminjaman buku adalah selama satu minggu dihitung mulai dari peminjaman buku dilakukan.
                   </p>
                 </div>
               </div>
@@ -1810,16 +1801,13 @@
                   </div>
                   <div class="w-full">
                     <h4 class="text-base font-semibold text-black sm:text-lg">
-                      Do you have plan to releasing Play Pro?
+                      Apakah boleh meminjam lebih dari 3 buku dalam satu waktu?
                     </h4>
                   </div>
                 </button>
                 <div class="faq-content hidden pl-[62px]">
                   <p class="py-3 text-base leading-relaxed text-body-color">
-                    It takes 2-3 weeks to get your first blog post ready. That
-                    includes the in-depth research & creation of your monthly
-                    content marketing strategy that we do before writing your
-                    first blog post, Ipsum available .
+                    Peminjaman buku hanya boleh dilakukan maksimal 3 kali dalam satu waktu.
                   </p>
                 </div>
               </div>
@@ -1847,16 +1835,13 @@
                   </div>
                   <div class="w-full">
                     <h4 class="text-base font-semibold text-black sm:text-lg">
-                      Where and how to host this template?
+                      Berapa denda yang dikenakan apabila terlambat dalam pengembalian buku?
                     </h4>
                   </div>
                 </button>
                 <div class="faq-content hidden pl-[62px]">
                   <p class="py-3 text-base leading-relaxed text-body-color">
-                    It takes 2-3 weeks to get your first blog post ready. That
-                    includes the in-depth research & creation of your monthly
-                    content marketing strategy that we do before writing your
-                    first blog post, Ipsum available .
+                    Denda yang dikenakan per pengembalian buku apabila terlambat yaitu sebesar Rp1000.
                   </p>
                 </div>
               </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use App\Models\User;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Http\Request;
 
 class PustakawanController extends Controller
@@ -14,6 +15,23 @@ class PustakawanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function laporan()
+    {
+        $jumlahPustakawan = User::where('role','pustakawan')->count();
+        $pustakawanAktif = User::where('role','pustakawan')->where('isAktif',1)->count();
+        $chart = (new LarapexChart)->pieChart()
+        ->setTitle('Keaktifan pustakawan')
+        ->setSubtitle('Pustakawan online vs Pustakawan offline')
+        ->addData([$pustakawanAktif,$jumlahPustakawan-$pustakawanAktif])->setColors(['#00FF00','#FF0000'])
+        ->setLabels(['Pustakawan online', 'Pustakawan offline']);
+        return view('dashboard.kepala.pustakawan.laporan', [
+            'judul' => 'Laporan Data Pustakawan',
+            'data_pustakawan' => User::where('role','pustakawan')->paginate(10),
+            'chart' => $chart
+        ]);
+    }
+
     public function index()
     {
         return view('dashboard.kepala.pustakawan.index', [

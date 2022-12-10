@@ -39,7 +39,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#void">
+                  <a href="/dashboard/pustakawan/laporan">
                     <span>Laporan Data Pustakawan</span>
                   </a>
                 </li>

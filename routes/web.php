@@ -132,6 +132,7 @@ Route::resource('/dashboard/buku', BukuController::class)->middleware(['pustakaw
 
 // Model Pustakawan view
 
+Route::get('/dashboard/pustakawan/laporan', [PustakawanController::class, 'laporan'])->middleware('kepala');
 Route::delete('/dashboard/pustakawan/{user:id}', [PustakawanController::class, 'destroy'])->middleware('kepala');
 
 Route::resource('/dashboard/pustakawan', PustakawanController::class)->middleware('kepala');

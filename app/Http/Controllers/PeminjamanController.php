@@ -87,7 +87,7 @@ class PeminjamanController extends Controller
     {
         return view('dashboard.peminjaman.index' ,[
             'judul' => 'Data Peminjaman Buku',
-            'data_peminjaman' =>  Peminjaman::latest()->where('status_peminjaman','book')->orWhere('status_peminjaman','dipinjam')->get(),
+            'data_peminjaman' =>  Peminjaman::latest()->where('status_peminjaman','book')->orWhere('status_peminjaman','dipinjam')->paginate(10),
             'carbon' => Carbon::class
         ]);
     }

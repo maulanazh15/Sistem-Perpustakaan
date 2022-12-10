@@ -125,22 +125,6 @@
                 </li>
               </ul> --}}
 
-              <p class="mb-4 text-base text-[#adadad]">
-                By creating an account you are agree with our
-                <a
-                  href="javascript:void(0)"
-                  class="text-primary hover:underline"
-                >
-                  Privacy
-                </a>
-                and
-                <a
-                  href="javascript:void(0)"
-                  class="text-primary hover:underline"
-                >
-                  Policy
-                </a>
-              </p>
 
               <p class="text-base text-[#adadad]">
                 Sudah Punya Akun Siperpus?
