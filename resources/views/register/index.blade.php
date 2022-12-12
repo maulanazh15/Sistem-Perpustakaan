@@ -128,7 +128,7 @@
 
               <p class="text-base text-[#adadad]">
                 Sudah Punya Akun Siperpus?
-                <a href="signin.html" class="text-primary hover:underline">
+                <a href="/login" class="text-primary hover:underline">
                   Log In
                 </a>
               </p>

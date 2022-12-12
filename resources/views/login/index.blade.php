@@ -120,12 +120,6 @@
                       </a>
                     </li>
                   </ul> --}}
-                  <a
-                    href="javascript:void(0)"
-                    class="mb-2 inline-block text-base text-[#adadad] hover:text-primary"
-                  >
-                    Lupa Password?
-                  </a>
                   <p class="text-base text-[#adadad]">
                     Belum mempunyai akun siperpus?
                     <a href="/register" class="text-primary hover:underline">
