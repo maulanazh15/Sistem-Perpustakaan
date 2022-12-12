@@ -82,9 +82,9 @@
                     {{-- <a href="/dashboard/buku/{{ $buku->id }}" class="button button-icon button-blue mr-2" data-ripple-light="true">
                       <i class="material-icons">visibility</i>
                     </a> --}}
-                    <a href="/dashboard/pustakawan/{{ $pustakawan->id }}/edit" class="button button-icon button-orange mr-2" data-ripple-light="true">
+                    {{-- <a href="/dashboard/pustakawan/{{ $pustakawan->id }}/edit" class="button button-icon button-orange mr-2" data-ripple-light="true">
                       <i class="material-icons">edit</i>
-                    </a>
+                    </a> --}}
                     <button class="button button-icon button-red" dialog-trigger="true" data-ripple-light="true">
                       <i class="material-icons">delete</i>
                     </button>

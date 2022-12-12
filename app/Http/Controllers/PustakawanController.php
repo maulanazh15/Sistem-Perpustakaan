@@ -97,7 +97,8 @@ class PustakawanController extends Controller
     public function edit(User $user)
     {
         return view('dashboard.kepala.pustakawan.edit', [
-            'judul' => 'Ubah data Pustakawan'
+            'judul' => 'Ubah data Pustakawan',
+            'pustakawan' => User::find($user->id)
         ]);
     }
 

@@ -85,7 +85,6 @@
                     {{-- <a href="/dashboard/peminjam/{{ $peminjam->id }}/edit" class="button button-icon button-orange mr-2" data-ripple-light="true">
                       <i class="material-icons">edit</i>
                     </a> --}}
-
                     <button class="button button-icon button-red" dialog-trigger="true" data-ripple-light="true">
                       <i class="material-icons">delete</i>
                     </button>
